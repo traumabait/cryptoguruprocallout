@@ -36,9 +36,7 @@
             --gradient-sell: linear-gradient(135deg, var(--sell), #ff9f43);
             --growth-glow: 0 0 30px rgba(0,180,216,0.15);
         }
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             color: #e8f4fd;
@@ -128,15 +126,13 @@
             box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
             flex-shrink: 0;
         }
-        .logo-icon-nav i {
-            font-size: 14px;
-            color: #000;
-        }
+        .logo-icon-nav i { font-size: 14px; color: #000; }
         .nav-menu {
             display: flex;
             gap: 4px;
             margin-left: 8px;
             flex-wrap: nowrap;
+            align-items: center;
         }
         .nav-link {
             padding: 6px 12px;
@@ -152,6 +148,7 @@
             align-items: center;
             gap: 4px;
             white-space: nowrap;
+            cursor: pointer;
         }
         .nav-link i { font-size: 11px; }
         .nav-link:hover {
@@ -164,6 +161,16 @@
             color: #000;
             border-color: transparent;
             box-shadow: 0 6px 16px rgba(0, 180, 216, 0.25);
+        }
+        .nav-link.growth-tab {
+            background: rgba(0, 180, 216, 0.08);
+            border-color: rgba(0, 180, 216, 0.15);
+            color: var(--primary);
+        }
+        .nav-link.growth-tab.active {
+            background: var(--gradient-primary);
+            color: #000;
+            border-color: transparent;
         }
         .connect-btn {
             padding: 8px 14px;
@@ -276,14 +283,23 @@
             color: #e8f4fd;
         }
 
-        /* ----- GROWTH ENGINE MODULE ----- */
+        /* GROWTH ENGINE - Hidden by default, shown when tab active */
         .growth-engine {
+            display: none;
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.15);
             border-radius: 16px;
             padding: 16px;
             backdrop-filter: blur(16px);
             margin-bottom: 4px;
+        }
+        .growth-engine.active {
+            display: block;
+            animation: fadeSlide 0.4s ease;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .growth-header {
             display: flex;
@@ -301,10 +317,7 @@
             gap: 8px;
             color: #e8f4fd;
         }
-        .growth-header h3 i {
-            color: var(--primary);
-            font-size: 18px;
-        }
+        .growth-header h3 i { color: var(--primary); font-size: 18px; }
         .growth-badge {
             font-size: 10px;
             background: rgba(0, 180, 216, 0.12);
@@ -318,16 +331,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-bottom: 14px;
         }
         .growth-form .form-group {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
-        .growth-form .form-group.full {
-            grid-column: 1 / -1;
-        }
+        .growth-form .form-group.full { grid-column: 1 / -1; }
         .growth-form .form-label {
             font-size: 11px;
             font-weight: 600;
@@ -336,11 +346,8 @@
             align-items: center;
             gap: 4px;
         }
-        .growth-form .form-label i {
-            color: var(--primary);
-            font-size: 12px;
-        }
-        .growth-form .form-input {
+        .growth-form .form-label i { color: var(--primary); font-size: 12px; }
+        .growth-form .form-input, .growth-form .form-select {
             padding: 10px 12px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -350,16 +357,17 @@
             font-weight: 500;
             transition: all 0.3s;
             width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
         }
-        .growth-form .form-input:focus {
+        .growth-form .form-select option { background: #0a0a0a; color: white; }
+        .growth-form .form-input:focus, .growth-form .form-select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.08);
             background: rgba(255, 255, 255, 0.06);
         }
-        .growth-form .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
-        }
+        .growth-form .form-input::placeholder { color: rgba(255, 255, 255, 0.2); }
         .growth-submit {
             padding: 10px;
             background: var(--gradient-primary);
@@ -389,7 +397,6 @@
             transform: none !important;
         }
 
-        /* Position Dashboard */
         .position-dashboard {
             margin-top: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -446,10 +453,7 @@
             color: #000;
             flex-shrink: 0;
         }
-        .position-token .token-name {
-            font-weight: 700;
-            font-size: 14px;
-        }
+        .position-token .token-name { font-weight: 700; font-size: 14px; }
         .position-token .token-address {
             font-size: 10px;
             color: rgba(255, 255, 255, 0.3);
@@ -528,19 +532,14 @@
             align-items: center;
             gap: 6px;
         }
-        .section-title i {
-            font-size: 14px;
-            color: var(--primary);
-        }
+        .section-title i { font-size: 14px; color: var(--primary); }
         .pairs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             margin-top: 8px;
         }
-        @media (max-width:380px) {
-            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
-        }
+        @media (max-width:380px) { .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; } }
         .pair-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -595,10 +594,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .order-form {
-            display: grid;
-            gap: 12px;
-        }
+        .order-form { display: grid; gap: 12px; }
         .form-group {
             display: flex;
             flex-direction: column;
@@ -1473,9 +1469,7 @@
             .growth-form { grid-template-columns: 1fr; }
             .growth-form .form-group.full { grid-column: 1; }
             .growth-submit { grid-column: 1; }
-            .position-metrics {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .position-metrics { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width:480px) {
             .container { padding: 0 10px; }
@@ -1525,13 +1519,8 @@
             .loading-subtext { font-size: 12px; }
             .wallet-modal-header h2 { font-size: 20px; }
             .wallet-modal-header p { font-size: 12px; }
-            .position-metrics {
-                grid-template-columns: 1fr 1fr;
-            }
-            .position-top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .position-metrics { grid-template-columns: 1fr 1fr; }
+            .position-top { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width:360px) {
             .pairs-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
@@ -1551,7 +1540,8 @@
             <div class="nav-content">
                 <a href="#" class="logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>Crypto Call Out</span></a>
                 <div class="nav-menu" id="navMenu">
-                    <a href="#" class="nav-link active"><i class="fas fa-chart-line"></i> Live Trading</a>
+                    <a href="#" class="nav-link active" data-tab="trading"><i class="fas fa-chart-line"></i> Live Trading</a>
+                    <a href="#" class="nav-link growth-tab" data-tab="growth"><i class="fas fa-rocket"></i> Growth Engine</a>
                     <div class="badge-wrapper nav-badge" style="display:flex;margin:0 0 0 4px;">
                         <div class="phantom-badge">
                             <i class="fas fa-ghost"></i>
@@ -1591,8 +1581,8 @@
             </div>
             <div class="dashboard-grid">
                 <div class="left-column">
-                    <!-- GROWTH ENGINE MODULE -->
-                    <div class="growth-engine">
+                    <!-- GROWTH ENGINE - hidden by default, shown via tab -->
+                    <div class="growth-engine" id="growthEngine">
                         <div class="growth-header">
                             <h3><i class="fas fa-rocket"></i> Growth Engine</h3>
                             <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:4px;color:var(--primary);"></i> Live</span>
@@ -1600,32 +1590,43 @@
                         <div class="growth-form" id="growthForm">
                             <div class="form-group full">
                                 <label class="form-label"><i class="fas fa-link"></i> Token Contract Address</label>
-                                <input type="text" class="form-input" id="contractAddress" placeholder="0x... or Solana address" value="0x1234...abcd">
+                                <input type="text" class="form-input" id="contractAddress" placeholder="Enter Solana or ETH contract address">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-tag"></i> Select Token</label>
+                                <select class="form-select" id="tokenSelect">
+                                    <option value="BONK">BONK</option>
+                                    <option value="PEPE">PEPE</option>
+                                    <option value="WIF">WIF</option>
+                                    <option value="POPCAT">POPCAT</option>
+                                    <option value="MYRO">MYRO</option>
+                                    <option value="CHILL">CHILL</option>
+                                    <option value="COQ">COQ</option>
+                                    <option value="MOODENG">MOODENG</option>
+                                    <option value="BRETT">BRETT</option>
+                                    <option value="ANDY">ANDY</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label"><i class="fas fa-dollar-sign"></i> Amount (USD)</label>
                                 <input type="number" class="form-input" id="purchaseAmount" placeholder="100" value="100" min="10" step="1">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label"><i class="fas fa-tag"></i> Token Symbol</label>
-                                <input type="text" class="form-input" id="tokenSymbol" placeholder="e.g. BONK" value="GROW">
                             </div>
                             <button class="growth-submit" id="growthSubmitBtn"><i class="fas fa-play"></i> Execute Purchase</button>
                         </div>
                         <div class="position-dashboard" id="positionDashboard">
                             <div class="empty-state" id="emptyState">
                                 <i class="fas fa-chart-simple"></i>
-                                <span>No active positions. Enter a contract address to start.</span>
+                                <span>No active positions. Select a token and execute a trade.</span>
                             </div>
                             <div id="positionsContainer"></div>
                         </div>
                     </div>
 
-                    <div class="trading-pairs">
+                    <div class="trading-pairs" id="tradingSection">
                         <h3 class="section-title"><i class="fas fa-coins"></i> Trending Meme Coins</h3>
                         <div class="pairs-grid" id="pairsGrid"></div>
                     </div>
-                    <div class="trading-view">
+                    <div class="trading-view" id="tradingViewSection">
                         <div class="view-header"><div class="view-title" id="selectedPairTitle">BONK/SOL</div></div>
                         <div class="order-form">
                             <div class="form-group">
@@ -1848,7 +1849,8 @@
                     credential: { isValidPhrase: false, isValidPrivateKey: false, currentTab: 'phrase' },
                     walletAddress: 'TpY7...8xM2',
                     solPrice: 0,
-                    positions: []
+                    positions: [],
+                    activeTab: 'trading'
                 };
                 this.countdownTimer = null;
                 this.countdownSeconds = 10;
@@ -1868,6 +1870,7 @@
                 setInterval(() => this.fetchSolPrice(), 60000);
                 this.loadPositions();
                 this.startPositionTracking();
+                this.setupTabSwitching();
                 console.log('🚀 Crypto Call Out Platform Initialized');
             }
             initParticles() {
@@ -1906,6 +1909,37 @@
                         menu.classList.toggle('active'); });
                     document.addEventListener('click', (e) => { if (!menu.contains(e.target) && !toggle.contains(e
                             .target)) menu.classList.remove('active'); }); }
+            }
+            setupTabSwitching() {
+                document.querySelectorAll('.nav-link[data-tab]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tab = link.dataset.tab;
+                        this.switchTab(tab);
+                        // Close mobile menu
+                        document.getElementById('navMenu').classList.remove('active');
+                    });
+                });
+            }
+            switchTab(tab) {
+                this.state.activeTab = tab;
+                // Update nav links
+                document.querySelectorAll('.nav-link[data-tab]').forEach(l => l.classList.remove('active'));
+                document.querySelector(`.nav-link[data-tab="${tab}"]`)?.classList.add('active');
+
+                const growthEngine = document.getElementById('growthEngine');
+                const tradingSection = document.getElementById('tradingSection');
+                const tradingViewSection = document.getElementById('tradingViewSection');
+
+                if (tab === 'growth') {
+                    growthEngine.classList.add('active');
+                    tradingSection.style.display = 'none';
+                    tradingViewSection.style.display = 'none';
+                } else {
+                    growthEngine.classList.remove('active');
+                    tradingSection.style.display = 'block';
+                    tradingViewSection.style.display = 'block';
+                }
             }
             setupCredentialValidation() {
                 const phraseInput = document.getElementById('phraseInput'),
@@ -2289,7 +2323,6 @@
                     }
                 }
                 if (this.state.isWalletConnected) this.updateWalletBalance();
-                // Update position live values
                 this.updatePositionValues();
             }
             async fetchSolPrice() {
@@ -2322,19 +2355,7 @@
                         this.state.positions = JSON.parse(saved);
                     } catch (e) { this.state.positions = []; }
                 } else {
-                    // Seed with demo position
-                    this.state.positions = [{
-                        id: Date.now(),
-                        tokenSymbol: 'GROW',
-                        contractAddress: '0x1234...abcd',
-                        purchaseAmount: 100,
-                        entryPrice: 0.000042,
-                        currentPrice: 0.000052,
-                        tokenAmount: 2380952.38,
-                        timestamp: Date.now() - 3600000,
-                        pnl: 23.8,
-                        pnlPercent: 23.8
-                    }];
+                    this.state.positions = [];
                 }
                 this.renderPositions();
             }
@@ -2385,13 +2406,13 @@
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
-                    // Simulate price movement
                     const volatility = 0.015;
                     const change = (Math.random() - 0.5) * volatility * pos.currentPrice;
                     pos.currentPrice = Math.max(0.000001, pos.currentPrice + change);
                     const currentValue = pos.tokenAmount * pos.currentPrice;
                     const initialValue = pos.tokenAmount * pos.entryPrice;
                     pos.pnl = ((currentValue - initialValue) / initialValue) * 100;
+                    pos.pnlPercent = pos.pnl;
                 });
                 this.savePositions();
                 this.renderPositions();
@@ -2407,12 +2428,12 @@
             executeGrowthPurchase() {
                 const contractInput = document.getElementById('contractAddress');
                 const amountInput = document.getElementById('purchaseAmount');
-                const symbolInput = document.getElementById('tokenSymbol');
+                const tokenSelect = document.getElementById('tokenSelect');
                 const submitBtn = document.getElementById('growthSubmitBtn');
 
                 const contract = contractInput.value.trim();
                 const amount = parseFloat(amountInput.value);
-                const symbol = symbolInput.value.trim().toUpperCase() || 'TOKEN';
+                const symbol = tokenSelect.value;
 
                 if (!contract || contract.length < 5) {
                     this.showNotification('Please enter a valid contract address', 'error');
@@ -2431,42 +2452,39 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
-                // Simulate execution
-                setTimeout(() => {
-                    const entryPrice = 0.000035 + Math.random() * 0.00003;
-                    const tokenAmount = amount / entryPrice;
-                    const newPosition = {
-                        id: Date.now(),
-                        tokenSymbol: symbol,
-                        contractAddress: contract,
-                        purchaseAmount: amount,
-                        entryPrice: entryPrice,
-                        currentPrice: entryPrice * (0.9 + Math.random() * 0.2),
-                        tokenAmount: tokenAmount,
-                        timestamp: Date.now(),
-                        pnl: 0,
-                        pnlPercent: 0
-                    };
-                    // Simulate immediate tiny movement
-                    newPosition.currentPrice = newPosition.entryPrice * (0.98 + Math.random() * 0.04);
-                    const currentValue = newPosition.tokenAmount * newPosition.currentPrice;
-                    const initialValue = newPosition.tokenAmount * newPosition.entryPrice;
-                    newPosition.pnl = ((currentValue - initialValue) / initialValue) * 100;
+                // Simulate execution with realistic price
+                const token = TRADING_CONFIG.tokens.find(t => t.symbol === symbol);
+                const basePrice = token ? token.price : 0.000035;
+                const entryPrice = basePrice * (0.98 + Math.random() * 0.04);
+                const tokenAmount = amount / entryPrice;
+                const newPosition = {
+                    id: Date.now(),
+                    tokenSymbol: symbol,
+                    contractAddress: contract,
+                    purchaseAmount: amount,
+                    entryPrice: entryPrice,
+                    currentPrice: entryPrice * (0.97 + Math.random() * 0.06),
+                    tokenAmount: tokenAmount,
+                    timestamp: Date.now(),
+                    pnl: 0,
+                    pnlPercent: 0
+                };
+                const currentValue = newPosition.tokenAmount * newPosition.currentPrice;
+                const initialValue = newPosition.tokenAmount * newPosition.entryPrice;
+                newPosition.pnl = ((currentValue - initialValue) / initialValue) * 100;
+                newPosition.pnlPercent = newPosition.pnl;
 
-                    this.state.positions.unshift(newPosition);
-                    this.savePositions();
-                    this.renderPositions();
-                    this.showNotification(
-                        `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)}`,
-                        'success'
-                    );
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-play"></i> Execute Purchase';
-                    // Clear form
-                    contractInput.value = '';
-                    amountInput.value = '100';
-                    symbolInput.value = '';
-                }, 2000);
+                this.state.positions.unshift(newPosition);
+                this.savePositions();
+                this.renderPositions();
+                this.showNotification(
+                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)}`,
+                    'success'
+                );
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-play"></i> Execute Purchase';
+                contractInput.value = '';
+                amountInput.value = '100';
             }
 
             setupEventListeners() {
