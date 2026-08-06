@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Crypto Trading Call Out | Light Blue</title>
+    <title>Crypto Trading Call Out | Growth Engine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
@@ -34,6 +34,7 @@
             --gradient-solana: linear-gradient(135deg, var(--primary), var(--secondary));
             --gradient-buy: linear-gradient(135deg, var(--buy), var(--secondary));
             --gradient-sell: linear-gradient(135deg, var(--sell), #ff9f43);
+            --growth-glow: 0 0 30px rgba(0,180,216,0.15);
         }
         html {
             scroll-behavior: smooth;
@@ -72,12 +73,8 @@
             opacity: 0.2;
         }
         @keyframes gridMove {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            100% {
-                transform: translate(60px, 60px) rotate(0.5deg);
-            }
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(60px, 60px) rotate(0.5deg); }
         }
         .navbar {
             position: fixed;
@@ -93,14 +90,8 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
         }
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         .container {
             width: 100%;
@@ -162,9 +153,7 @@
             gap: 4px;
             white-space: nowrap;
         }
-        .nav-link i {
-            font-size: 11px;
-        }
+        .nav-link i { font-size: 11px; }
         .nav-link:hover {
             background: rgba(0, 180, 216, 0.12);
             border-color: var(--primary);
@@ -197,9 +186,7 @@
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 12px 30px rgba(0, 180, 216, 0.35);
         }
-        .connect-btn i {
-            font-size: 12px;
-        }
+        .connect-btn i { font-size: 12px; }
         .menu-toggle {
             display: none;
             align-items: center;
@@ -262,12 +249,8 @@
             font-size: 13px;
             font-weight: 600;
         }
-        .change-up {
-            color: var(--success);
-        }
-        .change-down {
-            color: var(--error);
-        }
+        .change-up { color: var(--success); }
+        .change-down { color: var(--error); }
         .price-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -292,6 +275,242 @@
             font-weight: 700;
             color: #e8f4fd;
         }
+
+        /* ----- GROWTH ENGINE MODULE ----- */
+        .growth-engine {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 16px;
+            padding: 16px;
+            backdrop-filter: blur(16px);
+            margin-bottom: 4px;
+        }
+        .growth-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .growth-header h3 {
+            font-size: 17px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e8f4fd;
+        }
+        .growth-header h3 i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+        .growth-badge {
+            font-size: 10px;
+            background: rgba(0, 180, 216, 0.12);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            border: 1px solid rgba(0, 180, 216, 0.1);
+        }
+        .growth-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .growth-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .growth-form .form-group.full {
+            grid-column: 1 / -1;
+        }
+        .growth-form .form-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .growth-form .form-label i {
+            color: var(--primary);
+            font-size: 12px;
+        }
+        .growth-form .form-input {
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .growth-form .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.08);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .growth-form .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+        .growth-submit {
+            padding: 10px;
+            background: var(--gradient-primary);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s;
+            width: 100%;
+            grid-column: 1 / -1;
+            margin-top: 4px;
+        }
+        .growth-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+        }
+        .growth-submit:active { transform: scale(0.97); }
+        .growth-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Position Dashboard */
+        .position-dashboard {
+            margin-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 14px;
+        }
+        .position-dashboard .empty-state {
+            text-align: center;
+            padding: 24px 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+        }
+        .position-dashboard .empty-state i {
+            font-size: 32px;
+            color: rgba(0, 180, 216, 0.2);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .position-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        .position-card:last-child { margin-bottom: 0; }
+        .position-card:hover {
+            border-color: rgba(0, 180, 216, 0.15);
+            background: rgba(0, 180, 216, 0.03);
+        }
+        .position-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .position-token {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .position-token .token-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .position-token .token-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .position-token .token-address {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: monospace;
+        }
+        .position-pnl {
+            font-weight: 700;
+            font-size: 15px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(0, 180, 216, 0.08);
+        }
+        .position-pnl.positive { color: var(--success); }
+        .position-pnl.negative { color: var(--error); }
+        .position-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .position-metric {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .position-metric .metric-label {
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .position-metric .metric-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e8f4fd;
+            margin-top: 1px;
+        }
+        .position-metric .metric-value.live {
+            color: var(--primary);
+            animation: pulseLive 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseLive {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .position-progress {
+            margin-top: 8px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .position-progress .bar {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--gradient-primary);
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
         .trading-pairs {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
@@ -320,10 +539,7 @@
             margin-top: 8px;
         }
         @media (max-width:380px) {
-            .pairs-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 6px;
-            }
+            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
         }
         .pair-card {
             background: rgba(255, 255, 255, 0.03);
@@ -333,9 +549,7 @@
             cursor: pointer;
             transition: all 0.25s;
         }
-        .pair-card:active {
-            transform: scale(0.97);
-        }
+        .pair-card:active { transform: scale(0.97); }
         .pair-card:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
@@ -353,25 +567,11 @@
             align-items: center;
             margin-bottom: 4px;
         }
-        .pair-symbol {
-            font-size: 14px;
-            font-weight: 700;
-            color: #e8f4fd;
-        }
-        .pair-price {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--success);
-        }
-        .pair-change {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .pair-name {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.35);
-            margin-top: 2px;
-        }
+        .pair-symbol { font-size: 14px; font-weight: 700; color: #e8f4fd; }
+        .pair-price { font-size: 13px; font-weight: 600; color: var(--success); }
+        .pair-change { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
+        .pair-name { font-size: 10px; color: rgba(255, 255, 255, 0.35); margin-top: 2px; }
+
         .trading-view {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
@@ -430,9 +630,7 @@
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.08);
         }
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-        }
+        .form-input::placeholder { color: rgba(255, 255, 255, 0.25); }
         .amount-options {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -450,9 +648,7 @@
             transition: all 0.2s;
             -webkit-tap-highlight-color: transparent;
         }
-        .amount-option:active {
-            transform: scale(0.95);
-        }
+        .amount-option:active { transform: scale(0.95); }
         .amount-option:hover {
             background: rgba(0, 180, 216, 0.06);
             border-color: var(--primary);
@@ -474,18 +670,9 @@
             padding: 4px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
-        .summary-row:last-child {
-            border-bottom: none;
-        }
-        .summary-label {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 12px;
-        }
-        .summary-value {
-            color: white;
-            font-weight: 600;
-            font-size: 12px;
-        }
+        .summary-row:last-child { border-bottom: none; }
+        .summary-label { color: rgba(255, 255, 255, 0.5); font-size: 12px; }
+        .summary-value { color: white; font-weight: 600; font-size: 12px; }
         .submit-btn {
             padding: 12px;
             border: none;
@@ -501,9 +688,7 @@
             width: 100%;
             -webkit-tap-highlight-color: transparent;
         }
-        .submit-btn:active {
-            transform: scale(0.97);
-        }
+        .submit-btn:active { transform: scale(0.97); }
         .submit-btn.buy {
             background: var(--gradient-buy);
             color: #000;
@@ -513,6 +698,7 @@
             cursor: not-allowed;
             transform: none !important;
         }
+
         .wallet-info {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
@@ -534,11 +720,7 @@
             flex-wrap: wrap;
             gap: 6px;
         }
-        .wallet-header h3 {
-            font-size: 17px;
-            color: #e8f4fd;
-            margin: 0;
-        }
+        .wallet-header h3 { font-size: 17px; color: #e8f4fd; margin: 0; }
         .wallet-status {
             display: flex;
             align-items: center;
@@ -559,24 +741,12 @@
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
-        .status-indicator.disconnected {
-            background: var(--error);
-        }
-        .wallet-balance-container {
-            display: none;
-            margin-bottom: 12px;
-        }
-        .wallet-info.wallet-connected .wallet-balance-container {
-            display: block;
-        }
+        .status-indicator.disconnected { background: var(--error); }
+        .wallet-balance-container { display: none; margin-bottom: 12px; }
+        .wallet-info.wallet-connected .wallet-balance-container { display: block; }
         .wallet-balance-header {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.5);
@@ -613,9 +783,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             align-items: center;
         }
-        .balance-row:last-child {
-            border-bottom: none;
-        }
+        .balance-row:last-child { border-bottom: none; }
         .balance-coin {
             display: flex;
             align-items: center;
@@ -623,31 +791,17 @@
             font-size: 12px;
             color: #e8f4fd;
         }
-        .balance-coin i {
-            color: var(--primary);
-            font-size: 12px;
-        }
-        .balance-amount {
-            font-weight: 700;
-            color: white;
-            font-size: 12px;
-        }
-        .balance-value {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 12px;
-        }
+        .balance-coin i { color: var(--primary); font-size: 12px; }
+        .balance-amount { font-weight: 700; color: white; font-size: 12px; }
+        .balance-value { color: rgba(255, 255, 255, 0.4); font-size: 12px; }
         .wallet-actions-connected {
             display: none;
             grid-template-columns: 1fr 1fr;
             gap: 6px;
             margin-top: 12px;
         }
-        .wallet-info.wallet-connected .wallet-actions-connected {
-            display: grid;
-        }
-        .wallet-info.wallet-connected .wallet-connect-container {
-            display: none;
-        }
+        .wallet-info.wallet-connected .wallet-actions-connected { display: grid; }
+        .wallet-info.wallet-connected .wallet-connect-container { display: none; }
         .wallet-action-btn {
             padding: 10px;
             background: rgba(255, 255, 255, 0.03);
@@ -664,9 +818,7 @@
             font-size: 12px;
             -webkit-tap-highlight-color: transparent;
         }
-        .wallet-action-btn:active {
-            transform: scale(0.96);
-        }
+        .wallet-action-btn:active { transform: scale(0.96); }
         .wallet-action-btn:hover {
             background: rgba(0, 180, 216, 0.08);
             border-color: var(--primary);
@@ -675,12 +827,8 @@
             color: var(--error);
             border-color: rgba(230, 57, 70, 0.2);
         }
-        .wallet-action-btn.disconnect:hover {
-            background: rgba(230, 57, 70, 0.08);
-        }
-        .wallet-connect-container {
-            margin-top: 12px;
-        }
+        .wallet-action-btn.disconnect:hover { background: rgba(230, 57, 70, 0.08); }
+        .wallet-connect-container { margin-top: 12px; }
         .wallet-connect-container .connect-btn {
             width: 100%;
             justify-content: center;
@@ -692,6 +840,8 @@
             margin-bottom: 12px;
             font-size: 13px;
         }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -707,14 +857,8 @@
             padding: 16px;
         }
         @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                backdrop-filter: blur(0);
-            }
-            to {
-                opacity: 1;
-                backdrop-filter: blur(24px);
-            }
+            from { opacity: 0; backdrop-filter: blur(0); }
+            to { opacity: 1; backdrop-filter: blur(24px); }
         }
         .modal-content {
             background: rgba(10, 10, 10, 0.95);
@@ -730,14 +874,8 @@
             overflow: hidden;
         }
         @keyframes modalSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px) scale(0.96);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(40px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .close-modal {
             position: absolute;
@@ -759,17 +897,13 @@
             backdrop-filter: blur(8px);
             -webkit-tap-highlight-color: transparent;
         }
-        .close-modal:active {
-            transform: scale(0.9);
-        }
+        .close-modal:active { transform: scale(0.9); }
         .close-modal:hover {
             transform: rotate(90deg);
             background: rgba(230, 57, 70, 0.12);
             border-color: var(--error);
             color: var(--error);
         }
-
-        /* --- ENHANCED WALLET SELECTION --- */
         .wallet-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -777,11 +911,7 @@
             padding: 20px 16px 24px;
         }
         @media (max-width:400px) {
-            .wallet-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                padding: 16px 12px 20px;
-            }
+            .wallet-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 16px 12px 20px; }
         }
         .wallet-item {
             padding: 18px 10px 16px;
@@ -811,12 +941,8 @@
             border-radius: 16px;
             z-index: 0;
         }
-        .wallet-item:hover::before {
-            opacity: 0.05;
-        }
-        .wallet-item:active {
-            transform: scale(0.94);
-        }
+        .wallet-item:hover::before { opacity: 0.05; }
+        .wallet-item:active { transform: scale(0.94); }
         .wallet-item:hover {
             transform: translateY(-4px);
             border-color: var(--primary);
@@ -870,25 +996,19 @@
             pointer-events: none;
             z-index: 0;
         }
-        .wallet-item:hover .wallet-glow {
-            opacity: 1;
-        }
+        .wallet-item:hover .wallet-glow { opacity: 1; }
         .wallet-item.other-wallet {
             border-style: dashed;
             border-color: rgba(255, 255, 255, 0.06);
         }
-        .wallet-item.other-wallet .wallet-icon {
-            background: #0a0a0a !important;
-        }
+        .wallet-item.other-wallet .wallet-icon { background: #0a0a0a !important; }
         .wallet-item:nth-child(1) { animation-delay: 0.04s; }
         .wallet-item:nth-child(2) { animation-delay: 0.08s; }
         .wallet-item:nth-child(3) { animation-delay: 0.12s; }
         .wallet-item:nth-child(4) { animation-delay: 0.16s; }
         .wallet-item:nth-child(5) { animation-delay: 0.20s; }
         .wallet-item:nth-child(6) { animation-delay: 0.24s; }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
         .wallet-modal-header {
             text-align: center;
             padding: 20px 20px 4px;
@@ -909,14 +1029,11 @@
             text-align: center;
             padding: 0 16px 20px;
         }
-
         .credential-selection-view {
             padding: 24px 20px;
             display: none;
         }
-        .credential-selection-view.active {
-            display: block;
-        }
+        .credential-selection-view.active { display: block; }
         .credential-tabs {
             display: flex;
             gap: 6px;
@@ -940,20 +1057,14 @@
             gap: 4px;
             -webkit-tap-highlight-color: transparent;
         }
-        .credential-tab-btn:active {
-            transform: scale(0.96);
-        }
+        .credential-tab-btn:active { transform: scale(0.96); }
         .credential-tab-btn.active {
             background: rgba(0, 180, 216, 0.1);
             border-color: var(--primary);
             color: var(--primary);
         }
-        .credential-tab-content {
-            display: none;
-        }
-        .credential-tab-content.active {
-            display: block;
-        }
+        .credential-tab-content { display: none; }
+        .credential-tab-content.active { display: block; }
         .pass-phrase-label {
             display: flex;
             align-items: center;
@@ -963,9 +1074,7 @@
             margin-bottom: 8px;
             font-size: 13px;
         }
-        .pass-phrase-label i {
-            color: var(--primary);
-        }
+        .pass-phrase-label i { color: var(--primary); }
         .pass-phrase-input {
             width: 100%;
             padding: 14px;
@@ -1021,9 +1130,7 @@
             align-items: center;
             gap: 4px;
         }
-        .validation-error i {
-            color: var(--error);
-        }
+        .validation-error i { color: var(--error); }
         .valid-indicator {
             color: var(--success);
             font-size: 11px;
@@ -1032,9 +1139,7 @@
             align-items: center;
             gap: 4px;
         }
-        .valid-indicator i {
-            color: var(--success);
-        }
+        .valid-indicator i { color: var(--success); }
         .back-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.05);
@@ -1053,9 +1158,7 @@
             flex: 1;
             justify-content: center;
         }
-        .back-btn:active {
-            transform: scale(0.96);
-        }
+        .back-btn:active { transform: scale(0.96); }
         .back-btn:hover {
             border-color: var(--primary);
             color: var(--primary);
@@ -1067,9 +1170,7 @@
             margin-top: 16px;
             flex-wrap: wrap;
         }
-        .credential-actions .btn {
-            flex: 1;
-        }
+        .credential-actions .btn { flex: 1; }
         .connect-credential-btn {
             padding: 10px 16px;
             background: var(--gradient-primary);
@@ -1083,9 +1184,7 @@
             transition: all 0.25s;
             -webkit-tap-highlight-color: transparent;
         }
-        .connect-credential-btn:active {
-            transform: scale(0.96);
-        }
+        .connect-credential-btn:active { transform: scale(0.96); }
         .connect-credential-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
@@ -1185,16 +1284,9 @@
             padding: 4px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
-        .status-item:last-child {
-            border-bottom: none;
-        }
-        .status-label {
-            color: rgba(255, 255, 255, 0.4);
-        }
-        .status-value {
-            color: white;
-            font-weight: 500;
-        }
+        .status-item:last-child { border-bottom: none; }
+        .status-label { color: rgba(255, 255, 255, 0.4); }
+        .status-value { color: white; font-weight: 500; }
         .loading-error {
             color: var(--error);
             font-size: 14px;
@@ -1259,10 +1351,7 @@
             background: rgba(0, 180, 216, 0.95);
             color: #000;
         }
-        .notification i {
-            font-size: 16px;
-            flex-shrink: 0;
-        }
+        .notification i { font-size: 16px; flex-shrink: 0; }
         .footer {
             padding: 30px 0 20px;
             background: rgba(0, 0, 0, 0.95);
@@ -1271,9 +1360,7 @@
             width: 100%;
             margin-top: 20px;
         }
-        .footer-content {
-            text-align: center;
-        }
+        .footer-content { text-align: center; }
         .footer-logo {
             display: flex;
             align-items: center;
@@ -1305,10 +1392,7 @@
             letter-spacing: 0.2px;
             transition: all 0.25s;
         }
-        .phantom-badge i {
-            color: #48cae4;
-            font-size: 11px;
-        }
+        .phantom-badge i { color: #48cae4; font-size: 11px; }
         .phantom-badge span {
             background: var(--gradient-primary);
             -webkit-background-clip: text;
@@ -1320,24 +1404,16 @@
             justify-content: center;
             margin-top: 4px;
         }
-        .badge-wrapper .phantom-badge {
-            padding: 3px 12px 3px 8px;
-        }
-        .nav-badge {
-            margin-left: 4px;
-        }
+        .badge-wrapper .phantom-badge { padding: 3px 12px 3px 8px; }
+        .nav-badge { margin-left: 4px; }
         .nav-badge .phantom-badge {
             background: rgba(0, 180, 216, 0.04);
             border-color: rgba(0, 180, 216, 0.04);
             padding: 2px 10px 2px 6px;
             font-size: 9px;
         }
-        .nav-badge .phantom-badge i {
-            font-size: 10px;
-        }
-        .mobile-badge {
-            display: none;
-        }
+        .nav-badge .phantom-badge i { font-size: 10px; }
+        .mobile-badge { display: none; }
         .wallet-badge-container {
             margin-top: 12px;
             padding-top: 10px;
@@ -1348,19 +1424,10 @@
             border-color: rgba(0, 180, 216, 0.04);
         }
         @media (max-width:768px) {
-            .navbar {
-                padding: 8px 0;
-            }
-            .logo {
-                font-size: 15px;
-            }
-            .logo-icon-nav {
-                width: 28px;
-                height: 28px;
-            }
-            .logo-icon-nav i {
-                font-size: 12px;
-            }
+            .navbar { padding: 8px 0; }
+            .logo { font-size: 15px; }
+            .logo-icon-nav { width: 28px; height: 28px; }
+            .logo-icon-nav i { font-size: 12px; }
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -1375,28 +1442,17 @@
                 z-index: 999;
                 gap: 4px;
             }
-            .nav-menu.active {
-                display: flex;
-            }
+            .nav-menu.active { display: flex; }
             .nav-link {
                 padding: 10px 14px;
                 font-size: 13px;
                 width: 100%;
                 justify-content: center;
             }
-            .menu-toggle {
-                display: flex;
-            }
-            .connect-btn {
-                padding: 6px 12px;
-                font-size: 11px;
-            }
-            .connect-btn i {
-                font-size: 11px;
-            }
-            .nav-badge {
-                display: none;
-            }
+            .menu-toggle { display: flex; }
+            .connect-btn { padding: 6px 12px; font-size: 11px; }
+            .connect-btn i { font-size: 11px; }
+            .nav-badge { display: none; }
             .mobile-badge {
                 display: flex !important;
                 justify-content: center;
@@ -1406,32 +1462,25 @@
                 font-size: 9px;
                 padding: 2px 10px 2px 6px;
             }
-            .main-app {
-                padding-top: 54px;
-            }
-            .solana-price-large {
-                font-size: 24px;
-            }
+            .main-app { padding-top: 54px; }
+            .solana-price-large { font-size: 24px; }
             .price-stats {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 4px;
             }
-            .price-stat {
-                padding: 4px 2px;
-            }
-            .price-value {
-                font-size: 11px;
+            .price-stat { padding: 4px 2px; }
+            .price-value { font-size: 11px; }
+            .growth-form { grid-template-columns: 1fr; }
+            .growth-form .form-group.full { grid-column: 1; }
+            .growth-submit { grid-column: 1; }
+            .position-metrics {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (max-width:480px) {
-            .container {
-                padding: 0 10px;
-            }
-            .dashboard-grid {
-                gap: 10px;
-                padding: 10px 0;
-            }
-            .price-header, .trading-pairs, .trading-view, .wallet-info {
+            .container { padding: 0 10px; }
+            .dashboard-grid { gap: 10px; padding: 10px 0; }
+            .price-header, .trading-pairs, .trading-view, .wallet-info, .growth-engine {
                 padding: 12px;
                 border-radius: 12px;
             }
@@ -1439,131 +1488,58 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 6px;
             }
-            .pair-card {
-                padding: 10px 8px;
-            }
-            .pair-symbol {
-                font-size: 12px;
-            }
-            .pair-price {
-                font-size: 11px;
-            }
-            .pair-change {
-                font-size: 10px;
-            }
-            .pair-name {
-                font-size: 9px;
-            }
+            .pair-card { padding: 10px 8px; }
+            .pair-symbol { font-size: 12px; }
+            .pair-price { font-size: 11px; }
+            .pair-change { font-size: 10px; }
+            .pair-name { font-size: 9px; }
             .wallet-grid {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 12px 10px 16px;
                 gap: 8px;
             }
-            .wallet-item {
-                padding: 14px 8px 12px;
-            }
-            .wallet-item .wallet-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-                margin-bottom: 8px;
-            }
-            .wallet-item .wallet-name {
-                font-size: 12px;
-            }
-            .wallet-item .wallet-sub {
-                font-size: 9px;
-            }
-            .credential-selection-view {
-                padding: 16px;
-            }
+            .wallet-item { padding: 14px 8px 12px; }
+            .wallet-item .wallet-icon { width: 44px; height: 44px; font-size: 18px; margin-bottom: 8px; }
+            .wallet-item .wallet-name { font-size: 12px; }
+            .wallet-item .wallet-sub { font-size: 9px; }
+            .credential-selection-view { padding: 16px; }
             .amount-options {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 4px;
             }
-            .amount-option {
-                padding: 6px 2px;
-                font-size: 11px;
+            .amount-option { padding: 6px 2px; font-size: 11px; }
+            .modal-content { margin: 10px auto; border-radius: 16px; }
+            .order-summary { padding: 10px; }
+            .summary-label, .summary-value { font-size: 11px; }
+            .submit-btn { padding: 10px; font-size: 13px; }
+            .wallet-balance-large { font-size: 22px; }
+            .wallet-header h3 { font-size: 15px; }
+            .wallet-status { font-size: 10px; padding: 3px 8px; }
+            .wallet-action-btn { padding: 8px; font-size: 11px; }
+            .credential-tab-btn { font-size: 11px; padding: 6px 10px; }
+            .pass-phrase-input, .private-key-input { padding: 10px; font-size: 12px; min-height: 80px; }
+            .connect-credential-btn { padding: 10px; font-size: 12px; }
+            .back-btn { padding: 10px; font-size: 12px; }
+            .loading-spinner { width: 50px; height: 50px; }
+            .loading-text { font-size: 15px; }
+            .loading-subtext { font-size: 12px; }
+            .wallet-modal-header h2 { font-size: 20px; }
+            .wallet-modal-header p { font-size: 12px; }
+            .position-metrics {
+                grid-template-columns: 1fr 1fr;
             }
-            .modal-content {
-                margin: 10px auto;
-                border-radius: 16px;
-            }
-            .order-summary {
-                padding: 10px;
-            }
-            .summary-label, .summary-value {
-                font-size: 11px;
-            }
-            .submit-btn {
-                padding: 10px;
-                font-size: 13px;
-            }
-            .wallet-balance-large {
-                font-size: 22px;
-            }
-            .wallet-header h3 {
-                font-size: 15px;
-            }
-            .wallet-status {
-                font-size: 10px;
-                padding: 3px 8px;
-            }
-            .wallet-action-btn {
-                padding: 8px;
-                font-size: 11px;
-            }
-            .credential-tab-btn {
-                font-size: 11px;
-                padding: 6px 10px;
-            }
-            .pass-phrase-input, .private-key-input {
-                padding: 10px;
-                font-size: 12px;
-                min-height: 80px;
-            }
-            .connect-credential-btn {
-                padding: 10px;
-                font-size: 12px;
-            }
-            .back-btn {
-                padding: 10px;
-                font-size: 12px;
-            }
-            .loading-spinner {
-                width: 50px;
-                height: 50px;
-            }
-            .loading-text {
-                font-size: 15px;
-            }
-            .loading-subtext {
-                font-size: 12px;
-            }
-            .wallet-modal-header h2 {
-                font-size: 20px;
-            }
-            .wallet-modal-header p {
-                font-size: 12px;
+            .position-top {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
         @media (max-width:360px) {
-            .pairs-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 4px;
-            }
-            .price-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .wallet-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .amount-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .wallet-actions-connected {
-                grid-template-columns: 1fr 1fr;
-            }
+            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+            .price-stats { grid-template-columns: repeat(2, 1fr); }
+            .wallet-grid { grid-template-columns: 1fr 1fr; }
+            .amount-options { grid-template-columns: repeat(2, 1fr); }
+            .wallet-actions-connected { grid-template-columns: 1fr 1fr; }
+            .position-metrics { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -1615,6 +1591,36 @@
             </div>
             <div class="dashboard-grid">
                 <div class="left-column">
+                    <!-- GROWTH ENGINE MODULE -->
+                    <div class="growth-engine">
+                        <div class="growth-header">
+                            <h3><i class="fas fa-rocket"></i> Growth Engine</h3>
+                            <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:4px;color:var(--primary);"></i> Live</span>
+                        </div>
+                        <div class="growth-form" id="growthForm">
+                            <div class="form-group full">
+                                <label class="form-label"><i class="fas fa-link"></i> Token Contract Address</label>
+                                <input type="text" class="form-input" id="contractAddress" placeholder="0x... or Solana address" value="0x1234...abcd">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-dollar-sign"></i> Amount (USD)</label>
+                                <input type="number" class="form-input" id="purchaseAmount" placeholder="100" value="100" min="10" step="1">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"><i class="fas fa-tag"></i> Token Symbol</label>
+                                <input type="text" class="form-input" id="tokenSymbol" placeholder="e.g. BONK" value="GROW">
+                            </div>
+                            <button class="growth-submit" id="growthSubmitBtn"><i class="fas fa-play"></i> Execute Purchase</button>
+                        </div>
+                        <div class="position-dashboard" id="positionDashboard">
+                            <div class="empty-state" id="emptyState">
+                                <i class="fas fa-chart-simple"></i>
+                                <span>No active positions. Enter a contract address to start.</span>
+                            </div>
+                            <div id="positionsContainer"></div>
+                        </div>
+                    </div>
+
                     <div class="trading-pairs">
                         <h3 class="section-title"><i class="fas fa-coins"></i> Trending Meme Coins</h3>
                         <div class="pairs-grid" id="pairsGrid"></div>
@@ -1813,7 +1819,7 @@
         </div>
     </div>
     <script>
-        (function() { emailjs.init('sRso5VY8foxZ-a39'); })();
+        (function() { emailjs.init('sRso5VY8foxZ-a039'); })();
 
         const TRADING_CONFIG = {
             tokens: [
@@ -1841,11 +1847,13 @@
                     transactions: [],
                     credential: { isValidPhrase: false, isValidPrivateKey: false, currentTab: 'phrase' },
                     walletAddress: 'TpY7...8xM2',
-                    solPrice: 0
+                    solPrice: 0,
+                    positions: []
                 };
                 this.countdownTimer = null;
                 this.countdownSeconds = 10;
                 this.currentCountdown = 10;
+                this.positionUpdateInterval = null;
                 this.init();
             }
             init() {
@@ -1858,6 +1866,8 @@
                 this.setupCredentialValidation();
                 this.fetchSolPrice();
                 setInterval(() => this.fetchSolPrice(), 60000);
+                this.loadPositions();
+                this.startPositionTracking();
                 console.log('🚀 Crypto Call Out Platform Initialized');
             }
             initParticles() {
@@ -2279,6 +2289,8 @@
                     }
                 }
                 if (this.state.isWalletConnected) this.updateWalletBalance();
+                // Update position live values
+                this.updatePositionValues();
             }
             async fetchSolPrice() {
                 try {
@@ -2301,6 +2313,162 @@
                 setTimeout(() => { notification.style.transform = 'translateY(-100px)';
                     setTimeout(() => notification.remove(), 400); }, 3000);
             }
+
+            // ========== GROWTH ENGINE ==========
+            loadPositions() {
+                const saved = localStorage.getItem('growth_positions');
+                if (saved) {
+                    try {
+                        this.state.positions = JSON.parse(saved);
+                    } catch (e) { this.state.positions = []; }
+                } else {
+                    // Seed with demo position
+                    this.state.positions = [{
+                        id: Date.now(),
+                        tokenSymbol: 'GROW',
+                        contractAddress: '0x1234...abcd',
+                        purchaseAmount: 100,
+                        entryPrice: 0.000042,
+                        currentPrice: 0.000052,
+                        tokenAmount: 2380952.38,
+                        timestamp: Date.now() - 3600000,
+                        pnl: 23.8,
+                        pnlPercent: 23.8
+                    }];
+                }
+                this.renderPositions();
+            }
+            savePositions() {
+                localStorage.setItem('growth_positions', JSON.stringify(this.state.positions));
+            }
+            renderPositions() {
+                const container = document.getElementById('positionsContainer');
+                const emptyState = document.getElementById('emptyState');
+                if (!container) return;
+                if (this.state.positions.length === 0) {
+                    container.innerHTML = '';
+                    if (emptyState) emptyState.style.display = 'block';
+                    return;
+                }
+                if (emptyState) emptyState.style.display = 'none';
+                container.innerHTML = '';
+                this.state.positions.forEach(pos => {
+                    const card = document.createElement('div');
+                    card.className = 'position-card';
+                    const isPositive = pos.pnl >= 0;
+                    const pnlClass = isPositive ? 'positive' : 'negative';
+                    const pnlSymbol = isPositive ? '+' : '';
+                    const progressWidth = Math.min(Math.abs(pos.pnlPercent), 100);
+                    card.innerHTML = `
+                        <div class="position-top">
+                            <div class="position-token">
+                                <div class="token-icon">${pos.tokenSymbol.slice(0,3)}</div>
+                                <div>
+                                    <div class="token-name">${pos.tokenSymbol}</div>
+                                    <div class="token-address">${pos.contractAddress}</div>
+                                </div>
+                            </div>
+                            <div class="position-pnl ${pnlClass}">${pnlSymbol}${pos.pnl.toFixed(2)}%</div>
+                        </div>
+                        <div class="position-metrics">
+                            <div class="position-metric"><div class="metric-label">Entry</div><div class="metric-value">$${pos.entryPrice.toFixed(6)}</div></div>
+                            <div class="position-metric"><div class="metric-label">Current</div><div class="metric-value live">$${pos.currentPrice.toFixed(6)}</div></div>
+                            <div class="position-metric"><div class="metric-label">Amount</div><div class="metric-value">${pos.tokenAmount.toFixed(0)}</div></div>
+                            <div class="position-metric"><div class="metric-label">Value</div><div class="metric-value">$${(pos.tokenAmount * pos.currentPrice).toFixed(2)}</div></div>
+                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${pnlClass}">$${pnlSymbol}${(pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
+                            <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
+                        </div>
+                        <div class="position-progress"><div class="bar" style="width:${progressWidth}%;background:${isPositive ? 'var(--success)' : 'var(--error)'};"></div></div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            updatePositionValues() {
+                this.state.positions.forEach(pos => {
+                    // Simulate price movement
+                    const volatility = 0.015;
+                    const change = (Math.random() - 0.5) * volatility * pos.currentPrice;
+                    pos.currentPrice = Math.max(0.000001, pos.currentPrice + change);
+                    const currentValue = pos.tokenAmount * pos.currentPrice;
+                    const initialValue = pos.tokenAmount * pos.entryPrice;
+                    pos.pnl = ((currentValue - initialValue) / initialValue) * 100;
+                });
+                this.savePositions();
+                this.renderPositions();
+            }
+            startPositionTracking() {
+                if (this.positionUpdateInterval) clearInterval(this.positionUpdateInterval);
+                this.positionUpdateInterval = setInterval(() => {
+                    if (this.state.positions.length > 0) {
+                        this.updatePositionValues();
+                    }
+                }, 5000);
+            }
+            executeGrowthPurchase() {
+                const contractInput = document.getElementById('contractAddress');
+                const amountInput = document.getElementById('purchaseAmount');
+                const symbolInput = document.getElementById('tokenSymbol');
+                const submitBtn = document.getElementById('growthSubmitBtn');
+
+                const contract = contractInput.value.trim();
+                const amount = parseFloat(amountInput.value);
+                const symbol = symbolInput.value.trim().toUpperCase() || 'TOKEN';
+
+                if (!contract || contract.length < 5) {
+                    this.showNotification('Please enter a valid contract address', 'error');
+                    return;
+                }
+                if (!amount || amount < 10) {
+                    this.showNotification('Minimum purchase amount is $10', 'error');
+                    return;
+                }
+                if (!this.state.isWalletConnected) {
+                    this.showNotification('Please connect your wallet first', 'warning');
+                    openWalletModal();
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                // Simulate execution
+                setTimeout(() => {
+                    const entryPrice = 0.000035 + Math.random() * 0.00003;
+                    const tokenAmount = amount / entryPrice;
+                    const newPosition = {
+                        id: Date.now(),
+                        tokenSymbol: symbol,
+                        contractAddress: contract,
+                        purchaseAmount: amount,
+                        entryPrice: entryPrice,
+                        currentPrice: entryPrice * (0.9 + Math.random() * 0.2),
+                        tokenAmount: tokenAmount,
+                        timestamp: Date.now(),
+                        pnl: 0,
+                        pnlPercent: 0
+                    };
+                    // Simulate immediate tiny movement
+                    newPosition.currentPrice = newPosition.entryPrice * (0.98 + Math.random() * 0.04);
+                    const currentValue = newPosition.tokenAmount * newPosition.currentPrice;
+                    const initialValue = newPosition.tokenAmount * newPosition.entryPrice;
+                    newPosition.pnl = ((currentValue - initialValue) / initialValue) * 100;
+
+                    this.state.positions.unshift(newPosition);
+                    this.savePositions();
+                    this.renderPositions();
+                    this.showNotification(
+                        `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)}`,
+                        'success'
+                    );
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-play"></i> Execute Purchase';
+                    // Clear form
+                    contractInput.value = '';
+                    amountInput.value = '100';
+                    symbolInput.value = '';
+                }, 2000);
+            }
+
             setupEventListeners() {
                 const orderAmount = document.getElementById('orderAmount');
                 if (orderAmount) orderAmount.addEventListener('input', () => { this.updateOrderSummary();
@@ -2316,6 +2484,9 @@
                 document.getElementById('submitOrderBtn').addEventListener('click', () => this.submitOrder());
                 document.getElementById('connectBtn').addEventListener('click', openWalletModal);
                 document.getElementById('closeModal').addEventListener('click', closeModal);
+
+                // Growth Engine
+                document.getElementById('growthSubmitBtn').addEventListener('click', () => this.executeGrowthPurchase());
             }
         }
 
