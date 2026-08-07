@@ -74,12 +74,78 @@
             0% { transform: translate(0, 0) rotate(0deg); }
             100% { transform: translate(60px, 60px) rotate(0.5deg); }
         }
+
+        /* TICKER BAR */
+        .ticker-bar {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
+            border-top: 1px solid rgba(0, 180, 216, 0.1);
+            z-index: 999;
+            padding: 6px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 36px;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-track {
+            display: flex;
+            gap: 30px;
+            animation: tickerScroll 35s linear infinite;
+            padding-left: 20px;
+        }
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            flex-shrink: 0;
+        }
+        .ticker-item .ticker-symbol {
+            font-weight: 700;
+            color: #e8f4fd;
+        }
+        .ticker-item .ticker-price {
+            font-weight: 600;
+        }
+        .ticker-item .ticker-change {
+            font-weight: 600;
+            padding: 1px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+        }
+        .ticker-item .ticker-change.positive {
+            color: #00b4d8;
+            background: rgba(0, 180, 216, 0.12);
+        }
+        .ticker-item .ticker-change.negative {
+            color: #e63946;
+            background: rgba(230, 57, 70, 0.12);
+        }
+        .ticker-divider {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 14px;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 14px 0;
+            padding: 10px 0;
             background: rgba(0, 0, 0, 0.96);
             backdrop-filter: blur(20px) saturate(180%);
             z-index: 1000;
@@ -211,13 +277,13 @@
         .main-app {
             width: 100%;
             min-height: 100vh;
-            padding-top: 72px;
+            padding-top: 98px;
         }
         .dashboard-grid {
             display: grid;
             grid-template-columns: 1fr 340px;
             gap: 24px;
-            padding: 24px 0;
+            padding: 20px 0;
         }
         @media (max-width:1024px) {
             .dashboard-grid { grid-template-columns: 1fr; }
@@ -226,7 +292,7 @@
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
             border-radius: 18px;
-            padding: 20px 24px;
+            padding: 18px 20px;
             margin-bottom: 6px;
             backdrop-filter: blur(16px);
         }
@@ -234,17 +300,17 @@
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            gap: 12px;
+            gap: 10px;
         }
         .solana-price {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         .solana-price-large {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             font-family: 'Space Grotesk', sans-serif;
             background: var(--gradient-primary);
@@ -264,24 +330,24 @@
         .price-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 8px;
+            gap: 8px;
+            margin-top: 6px;
         }
         .price-stat {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
-            padding: 8px 6px;
+            padding: 8px 4px;
             border-radius: 10px;
         }
         .price-label {
-            font-size: 10px;
+            font-size: 9px;
             color: rgba(255, 255, 255, 0.4);
             margin-bottom: 2px;
             text-transform: uppercase;
             letter-spacing: 0.4px;
         }
         .price-value {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: #e8f4fd;
         }
@@ -1440,9 +1506,14 @@
             background: rgba(0, 180, 216, 0.03);
             border-color: rgba(0, 180, 216, 0.04);
         }
+
         @media (max-width:768px) {
-            .navbar { padding: 10px 0; }
-            .logo { font-size: 16px; }
+            .ticker-bar { top: 54px; height: 30px; padding: 4px 0; }
+            .ticker-item { font-size: 10px; gap: 5px; }
+            .ticker-track { gap: 20px; animation-duration: 25s; }
+            .ticker-item .ticker-change { font-size: 9px; padding: 1px 6px; }
+            .navbar { padding: 8px 0; }
+            .logo { font-size: 15px; }
             .logo-icon-nav { width: 30px; height: 30px; }
             .logo-icon-nav i { font-size: 13px; }
             .nav-menu {
@@ -1479,91 +1550,90 @@
                 font-size: 10px;
                 padding: 3px 12px 3px 8px;
             }
-            .main-app { padding-top: 64px; }
-            .solana-price-large { font-size: 26px; }
+            .main-app { padding-top: 84px; }
+            .price-header { padding: 14px 16px; }
+            .solana-price-large { font-size: 22px; }
             .price-stats {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 6px;
+                gap: 4px;
             }
-            .price-stat { padding: 6px 4px; }
-            .price-value { font-size: 12px; }
+            .price-stat { padding: 4px 2px; }
+            .price-value { font-size: 11px; }
+            .price-label { font-size: 8px; }
             .growth-form { grid-template-columns: 1fr; }
             .growth-form .form-group.full { grid-column: 1; }
             .growth-submit { grid-column: 1; }
             .position-metrics { grid-template-columns: repeat(2, 1fr); }
             .container { padding: 0 14px; }
+            .dashboard-grid { gap: 14px; padding: 12px 0; }
+            .trading-pairs, .trading-view, .wallet-info, .growth-engine { padding: 14px 16px; }
         }
         @media (max-width:480px) {
-            .container { padding: 0 12px; }
-            .dashboard-grid { gap: 12px; padding: 12px 0; }
-            .price-header, .trading-pairs, .trading-view, .wallet-info, .growth-engine {
-                padding: 14px 16px;
+            .ticker-bar { top: 48px; height: 26px; }
+            .ticker-item { font-size: 9px; gap: 4px; }
+            .ticker-track { gap: 14px; animation-duration: 20s; }
+            .ticker-item .ticker-change { font-size: 8px; padding: 0 5px; }
+            .main-app { padding-top: 74px; }
+            .price-header { padding: 12px 14px; border-radius: 14px; }
+            .solana-price-large { font-size: 20px; }
+            .price-stats { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+            .price-stat { padding: 6px 4px; }
+            .price-value { font-size: 12px; }
+            .container { padding: 0 10px; }
+            .dashboard-grid { gap: 10px; padding: 10px 0; }
+            .trading-pairs, .trading-view, .wallet-info, .growth-engine {
+                padding: 12px 14px;
                 border-radius: 14px;
             }
-            .pairs-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .pair-card { padding: 12px 12px; }
+            .pairs-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+            .pair-card { padding: 10px 10px; }
             .pair-symbol { font-size: 13px; }
             .pair-price { font-size: 12px; }
-            .pair-change { font-size: 11px; }
-            .pair-name { font-size: 10px; }
-            .wallet-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 14px 12px 18px;
-                gap: 10px;
-            }
-            .wallet-item { padding: 16px 10px 14px; }
-            .wallet-item .wallet-icon { width: 48px; height: 48px; font-size: 20px; margin-bottom: 10px; }
+            .pair-change { font-size: 10px; }
+            .pair-name { font-size: 9px; }
+            .wallet-grid { grid-template-columns: repeat(2, 1fr); padding: 14px 12px 18px; gap: 10px; }
+            .wallet-item { padding: 14px 8px 12px; }
+            .wallet-item .wallet-icon { width: 44px; height: 44px; font-size: 18px; margin-bottom: 10px; }
             .wallet-item .wallet-name { font-size: 13px; }
-            .wallet-item .wallet-sub { font-size: 10px; }
-            .credential-selection-view { padding: 18px 14px; }
-            .amount-options {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 5px;
-            }
-            .amount-option { padding: 8px 2px; font-size: 12px; }
-            .modal-content { margin: 10px auto; border-radius: 18px; }
-            .order-summary { padding: 12px 14px; }
+            .wallet-item .wallet-sub { font-size: 9px; }
+            .amount-options { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+            .amount-option { padding: 6px 2px; font-size: 11px; }
+            .wallet-balance-large { font-size: 22px; }
+            .order-summary { padding: 10px 12px; }
             .summary-label, .summary-value { font-size: 12px; }
             .submit-btn { padding: 12px; font-size: 14px; }
-            .wallet-balance-large { font-size: 24px; }
-            .wallet-header h3 { font-size: 16px; }
-            .wallet-status { font-size: 11px; padding: 4px 10px; }
-            .wallet-action-btn { padding: 10px; font-size: 12px; }
-            .credential-tab-btn { font-size: 12px; padding: 8px 12px; }
-            .pass-phrase-input, .private-key-input { padding: 12px; font-size: 13px; min-height: 90px; }
-            .connect-credential-btn { padding: 12px; font-size: 13px; }
-            .back-btn { padding: 12px; font-size: 13px; }
-            .loading-spinner { width: 54px; height: 54px; }
-            .loading-text { font-size: 16px; }
-            .loading-subtext { font-size: 13px; }
-            .wallet-modal-header h2 { font-size: 22px; }
-            .wallet-modal-header p { font-size: 13px; }
+            .modal-content { margin: 10px auto; border-radius: 18px; }
+            .credential-selection-view { padding: 16px 14px; }
+            .pass-phrase-input, .private-key-input { padding: 12px; font-size: 13px; min-height: 80px; }
             .position-metrics { grid-template-columns: 1fr 1fr; }
             .position-top { flex-direction: column; align-items: flex-start; }
-            .growth-header h3 { font-size: 17px; }
-            .growth-form .form-input, .growth-form .form-select { padding: 10px 12px; font-size: 13px; }
-            .price-header { padding: 14px 16px; }
-            .solana-price-large { font-size: 22px; }
-            .price-stats { gap: 4px; }
-            .price-stat { padding: 4px 2px; }
-            .price-value { font-size: 11px; }
+            .position-card { padding: 12px 14px; }
+            .position-token .token-icon { width: 30px; height: 30px; font-size: 12px; }
+            .position-token .token-name { font-size: 13px; }
+            .growth-header h3 { font-size: 16px; }
         }
         @media (max-width:360px) {
-            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
-            .price-stats { grid-template-columns: repeat(2, 1fr); }
+            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
             .wallet-grid { grid-template-columns: 1fr 1fr; }
             .amount-options { grid-template-columns: repeat(2, 1fr); }
             .wallet-actions-connected { grid-template-columns: 1fr 1fr; }
             .position-metrics { grid-template-columns: 1fr 1fr; }
+            .ticker-item { font-size: 8px; }
+            .ticker-track { gap: 10px; animation-duration: 18s; }
         }
     </style>
 </head>
 <body>
     <canvas id="particlesCanvas"></canvas>
     <div class="grid-bg"></div>
+
+    <!-- TICKER BAR -->
+    <div class="ticker-bar" id="tickerBar">
+        <div class="ticker-track" id="tickerTrack">
+            <!-- Will be populated by JS -->
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
@@ -1594,17 +1664,17 @@
             <div class="price-header">
                 <div class="price-row">
                     <div class="solana-price">
-                        <div class="solana-price-large" id="trampPrice">$0.000032</div>
+                        <div class="solana-price-large" id="trampPrice">$0.000041</div>
                         <div class="price-change">
-                            <span id="priceChange" class="change-up">+28.5%</span>
+                            <span id="priceChange" class="change-up">+41.88%</span>
                             <span id="priceChange24h" style="font-size:12px;color:rgba(255,255,255,0.35);">(24h)</span>
                         </div>
                     </div>
                     <div class="price-stats">
-                        <div class="price-stat"><div class="price-label">SOL Price</div><div class="price-value" id="solPrice">$0.00</div></div>
-                        <div class="price-stat"><div class="price-label">24H High</div><div class="price-value" id="high24h">$0.000041</div></div>
-                        <div class="price-stat"><div class="price-label">24H Low</div><div class="price-value" id="low24h">$0.000025</div></div>
-                        <div class="price-stat"><div class="price-label">24H Volume</div><div class="price-value" id="volume24h">$15k</div></div>
+                        <div class="price-stat"><div class="price-label">SOL Price</div><div class="price-value" id="solPrice">$73.99</div></div>
+                        <div class="price-stat"><div class="price-label">24H High</div><div class="price-value" id="high24h">$0.000059</div></div>
+                        <div class="price-stat"><div class="price-label">24H Low</div><div class="price-value" id="low24h">$0.000024</div></div>
+                        <div class="price-stat"><div class="price-label">24H Volume</div><div class="price-value" id="volume24h">$26.7M</div></div>
                     </div>
                 </div>
             </div>
@@ -1650,7 +1720,7 @@
                         <div class="pairs-grid" id="pairsGrid"></div>
                     </div>
                     <div class="trading-view" id="tradingViewSection">
-                        <div class="view-header"><div class="view-title" id="selectedPairTitle">20267/SOL</div></div>
+                        <div class="view-header"><div class="view-title" id="selectedPairTitle">🚀 20267/SOL</div></div>
                         <div class="order-form">
                             <div class="form-group">
                                 <label class="form-label">Amount (USD)</label>
@@ -1667,7 +1737,7 @@
                             </div>
                             <div class="order-summary">
                                 <div class="summary-row"><span class="summary-label">Token Amount</span><span class="summary-value" id="tokenAmount">0.00 20267</span></div>
-                                <div class="summary-row"><span class="summary-label">Price</span><span class="summary-value" id="tokenPrice">$0.000032</span></div>
+                                <div class="summary-row"><span class="summary-label">Price</span><span class="summary-value" id="tokenPrice">$0.000041</span></div>
                                 <div class="summary-row"><span class="summary-label">Network Fee</span><span class="summary-value">$0.25</span></div>
                                 <div class="summary-row"><span class="summary-label">Total Cost</span><span class="summary-value" id="totalCost">$0.00</span></div>
                             </div>
@@ -1845,9 +1915,22 @@
     <script>
         (function() { emailjs.init('sRso5VY8foxZ-a039'); })();
 
+        const TICKER_SYMBOLS = [
+            { id: 'bitcoin', symbol: 'BTC' },
+            { id: 'ethereum', symbol: 'ETH' },
+            { id: 'solana', symbol: 'SOL' },
+            { id: 'binancecoin', symbol: 'BNB' },
+            { id: 'ripple', symbol: 'XRP' },
+            { id: 'cardano', symbol: 'ADA' },
+            { id: 'dogecoin', symbol: 'DOGE' },
+            { id: 'polkadot', symbol: 'DOT' },
+            { id: 'avalanche-2', symbol: 'AVAX' },
+            { id: 'chainlink', symbol: 'LINK' }
+        ];
+
         const TRADING_CONFIG = {
             tokens: [
-                { symbol: '20267', name: '20267', price: 0.000042, change24h: 42.0, icon: 'fa-rocket', color: '#ff6b6b' },
+                { symbol: '20267', name: '20267', price: 0.000041, change24h: 41.88, icon: 'fa-rocket', color: '#ff6b6b' },
                 { symbol: 'HOWDY', name: 'HOWDY', price: 0.000038, change24h: 35.2, icon: 'fa-hat-cowboy', color: '#f9a825' },
                 { symbol: 'STRAWBERRY', name: 'STRAWBERRY', price: 0.000056, change24h: 28.5, icon: 'fa-strawberry', color: '#ff3366' },
                 { symbol: 'MILKERS', name: 'MILKERS', price: 0.000029, change24h: 51.7, icon: 'fa-glass-whiskey', color: '#8bc34a' }
@@ -1867,9 +1950,10 @@
                     transactions: [],
                     credential: { isValidPhrase: false, isValidPrivateKey: false, currentTab: 'phrase' },
                     walletAddress: 'TpY7...8xM2',
-                    solPrice: 0,
+                    solPrice: 73.99,
                     positions: [],
-                    activeTab: 'trading'
+                    activeTab: 'trading',
+                    tickerPrices: {}
                 };
                 this.countdownTimer = null;
                 this.countdownSeconds = 10;
@@ -1890,6 +1974,7 @@
                 this.loadPositions();
                 this.startPositionTracking();
                 this.setupTabSwitching();
+                this.initTicker();
                 console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active');
             }
             initParticles() {
@@ -2366,6 +2451,71 @@
                     setTimeout(() => notification.remove(), 400); }, 3000);
             }
 
+            // ========== TICKER ==========
+            async initTicker() {
+                await this.fetchTickerPrices();
+                this.renderTicker();
+                setInterval(() => {
+                    this.fetchTickerPrices();
+                }, 30000);
+            }
+            async fetchTickerPrices() {
+                try {
+                    const ids = TICKER_SYMBOLS.map(t => t.id).join(',');
+                    const res = await fetch(
+                        `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
+                        );
+                    const data = await res.json();
+                    this.state.tickerPrices = data;
+                    this.renderTicker();
+                } catch (e) {
+                    console.log('Ticker fetch failed, using fallback');
+                    // Fallback data
+                    const fallback = {
+                        bitcoin: { usd: 43210, usd_24h_change: 2.5 },
+                        ethereum: { usd: 2340, usd_24h_change: -1.2 },
+                        solana: { usd: 73.99, usd_24h_change: 5.8 },
+                        binancecoin: { usd: 312, usd_24h_change: 0.8 },
+                        ripple: { usd: 0.62, usd_24h_change: 1.5 },
+                        cardano: { usd: 0.38, usd_24h_change: -0.5 },
+                        dogecoin: { usd: 0.082, usd_24h_change: 3.2 },
+                        polkadot: { usd: 6.85, usd_24h_change: -2.1 },
+                        'avalanche-2': { usd: 35.20, usd_24h_change: 4.5 },
+                        chainlink: { usd: 14.30, usd_24h_change: 1.8 }
+                    };
+                    this.state.tickerPrices = fallback;
+                    this.renderTicker();
+                }
+            }
+            renderTicker() {
+                const track = document.getElementById('tickerTrack');
+                if (!track) return;
+                let html = '';
+                const data = this.state.tickerPrices;
+                // Duplicate for seamless scroll
+                for (let repeat = 0; repeat < 2; repeat++) {
+                    TICKER_SYMBOLS.forEach(ticker => {
+                        const priceData = data[ticker.id];
+                        const price = priceData?.usd || 0;
+                        const change = priceData?.usd_24h_change || 0;
+                        const changeClass = change >= 0 ? 'positive' : 'negative';
+                        const changeSign = change >= 0 ? '+' : '';
+                        const formattedPrice = price >= 100 ? price.toFixed(2) : price >= 1 ? price.toFixed(3) :
+                            price.toFixed(6);
+                        html += `
+                            <div class="ticker-item">
+                                <span class="ticker-symbol">${ticker.symbol}</span>
+                                <span class="ticker-price">$${formattedPrice}</span>
+                                <span class="ticker-change ${changeClass}">${changeSign}${change.toFixed(2)}%</span>
+                                <span class="ticker-divider">|</span>
+                            </div>
+                        `;
+                    });
+                }
+                track.innerHTML = html;
+            }
+
+            // ========== GROWTH ENGINE ==========
             loadPositions() {
                 const saved = localStorage.getItem('growth_positions');
                 if (saved) {
