@@ -2527,6 +2527,10 @@
                     const isAtTarget = pos.pnlPercent >= (TARGET_MULTIPLIER - 1) * 100;
                     const emoji = pos.tokenSymbol === '20267' ? '🚀' : pos.tokenSymbol === 'HOWDY' ? '🤠' : pos.tokenSymbol === 'STRAWBERRY' ? '🍓' : '🥛';
                     
+                    // Don't show "Target Reached" text, just show the percentage capped at max
+                    const displayPnl = isAtTarget ? (TARGET_MULTIPLIER - 1) * 100 : pos.pnl;
+                    const displayPnlPercent = isAtTarget ? (TARGET_MULTIPLIER - 1) * 100 : pos.pnlPercent;
+                    
                     card.innerHTML = `
                         <div class="position-top">
                             <div class="position-token">
@@ -2536,18 +2540,17 @@
                                     <div class="token-address">${pos.contractAddress}</div>
                                 </div>
                             </div>
-                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🎯 TARGET REACHED' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
+                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${pnlSymbol}${displayPnl.toFixed(2)}%</div>
                         </div>
                         <div class="position-metrics">
                             <div class="position-metric"><div class="metric-label">Entry</div><div class="metric-value">$${pos.entryPrice.toFixed(6)}</div></div>
                             <div class="position-metric"><div class="metric-label">Current</div><div class="metric-value ${isAtTarget ? 'target-hit' : 'live'}">$${pos.currentPrice.toFixed(6)}</div></div>
                             <div class="position-metric"><div class="metric-label">Amount</div><div class="metric-value">${pos.tokenAmount.toFixed(0)}</div></div>
                             <div class="position-metric"><div class="metric-label">Value</div><div class="metric-value">$${(pos.tokenAmount * pos.currentPrice).toFixed(2)}</div></div>
-                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${isAtTarget ? 'target-hit' : pnlClass}">${isAtTarget ? '🎯 MAX' : '$' + pnlSymbol + (pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
+                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${isAtTarget ? 'target-hit' : pnlClass}">${isAtTarget ? '🎯' : '$' + pnlSymbol + (pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
                             <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
                         </div>
                         <div class="position-progress"><div class="bar ${isAtTarget ? 'target-hit' : ''}" style="width:${isAtTarget ? 100 : progressWidth}%;background:${isAtTarget ? 'linear-gradient(90deg, #ffd700, #ffaa00)' : (isPositive ? 'var(--success)' : 'var(--error)')};"></div></div>
-                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 Target reached — position capped</div>' : ''}
                     `;
                     container.appendChild(card);
                 });
