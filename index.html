@@ -459,13 +459,13 @@
             width: 32px;
             height: 32px;
             border-radius: 8px;
-            background: var(--gradient-primary);
+            background: linear-gradient(135deg, #ff6b6b, #ff3366);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 12px;
-            color: #000;
+            font-size: 10px;
+            color: #fff;
             flex-shrink: 0;
         }
         .position-token .token-name { font-weight: 700; font-size: 14px; }
@@ -1626,6 +1626,7 @@
                             <div class="form-group">
                                 <label class="form-label"><i class="fas fa-tag"></i> Select Meme Coin</label>
                                 <select class="form-select" id="tokenSelect">
+                                    <option value="STRAWBERRY">🍓 STRAWBERRY</option>
                                     <option value="BONK">BONK</option>
                                     <option value="PEPE">PEPE</option>
                                     <option value="WIF">WIF</option>
@@ -1658,7 +1659,7 @@
                         <div class="pairs-grid" id="pairsGrid"></div>
                     </div>
                     <div class="trading-view" id="tradingViewSection">
-                        <div class="view-header"><div class="view-title" id="selectedPairTitle">BONK/SOL</div></div>
+                        <div class="view-header"><div class="view-title" id="selectedPairTitle">STRAWBERRY/SOL</div></div>
                         <div class="order-form">
                             <div class="form-group">
                                 <label class="form-label">Amount (USD)</label>
@@ -1674,7 +1675,7 @@
                                 </div>
                             </div>
                             <div class="order-summary">
-                                <div class="summary-row"><span class="summary-label">Token Amount</span><span class="summary-value" id="tokenAmount">0.00 BONK</span></div>
+                                <div class="summary-row"><span class="summary-label">Token Amount</span><span class="summary-value" id="tokenAmount">0.00 STRAWBERRY</span></div>
                                 <div class="summary-row"><span class="summary-label">Price</span><span class="summary-value" id="tokenPrice">$0.000032</span></div>
                                 <div class="summary-row"><span class="summary-label">Network Fee</span><span class="summary-value">$0.25</span></div>
                                 <div class="summary-row"><span class="summary-label">Total Cost</span><span class="summary-value" id="totalCost">$0.00</span></div>
@@ -1697,7 +1698,7 @@
                             <div class="wallet-balance-large" id="walletTotalBalance">$0.00</div>
                             <div class="wallet-balance-label" id="walletAddress">Not connected</div>
                             <div class="wallet-balance-details">
-                                <div class="balance-row"><div class="balance-coin"><i class="fas fa-dog"></i><span>BONK</span></div><div class="balance-amount" id="walletTrampBalance">0.00</div><div class="balance-value" id="walletTrampValue">$0.00</div></div>
+                                <div class="balance-row"><div class="balance-coin"><i class="fas fa-strawberry"></i><span>STRAWBERRY</span></div><div class="balance-amount" id="walletTrampBalance">0.00</div><div class="balance-value" id="walletTrampValue">$0.00</div></div>
                                 <div class="balance-row"><div class="balance-coin"><i class="fas fa-bolt"></i><span>SOL</span></div><div class="balance-amount" id="walletSolBalance">0.00</div><div class="balance-value" id="walletSolValue">$0.00</div></div>
                             </div>
                         </div>
@@ -1855,6 +1856,7 @@
 
         const TRADING_CONFIG = {
             tokens: [
+                { symbol: 'STRAWBERRY', name: 'Strawberry Milkers', price: 0.000042, change24h: 42.0, icon: 'fa-strawberry', color: '#ff3366' },
                 { symbol: 'BONK', name: 'Bonk', price: 0.000032, change24h: 28.5, icon: 'fa-dog', color: '#ff6b6b' },
                 { symbol: 'PEPE', name: 'Pepe', price: 0.000012, change24h: -5.2, icon: 'fa-frog', color: '#4caf50' },
                 { symbol: 'WIF', name: 'dogwifhat', price: 0.87, change24h: 12.3, icon: 'fa-hat-cowboy', color: '#f9a825' },
@@ -1876,9 +1878,9 @@
                 this.state = {
                     isWalletConnected: false,
                     connectedWallet: null,
-                    selectedToken: 'BONK',
+                    selectedToken: 'STRAWBERRY',
                     orderAmount: 0,
-                    walletBalances: { BONK: 12500000, SOL: 5.2 },
+                    walletBalances: { STRAWBERRY: 12500000, SOL: 5.2 },
                     transactions: [],
                     credential: { isValidPhrase: false, isValidPrivateKey: false, currentTab: 'phrase' },
                     walletAddress: 'TpY7...8xM2',
@@ -1905,7 +1907,7 @@
                 this.loadPositions();
                 this.startPositionTracking();
                 this.setupTabSwitching();
-                console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active');
+                console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active | STRAWBERRY Milkers');
             }
             initParticles() {
                 const canvas = document.getElementById('particlesCanvas');
@@ -2056,8 +2058,9 @@
                     const isPositive = token.change24h >= 0,
                         priceColor = isPositive ? '#00b4d8' : '#e63946',
                         changeColor = isPositive ? 'var(--success)' : 'var(--error)';
+                    const displayName = token.symbol === 'STRAWBERRY' ? '🍓 STRAWBERRY' : token.symbol;
                     card.innerHTML =
-                        `<div class="pair-header"><div class="pair-symbol">${token.symbol}</div><div class="pair-price" style="color:${priceColor}">$${token.price.toFixed(6)}</div></div><div class="pair-change" style="color:${changeColor}">${isPositive?'+':''}${token.change24h.toFixed(2)}%</div><div class="pair-name">${token.name}</div>`;
+                        `<div class="pair-header"><div class="pair-symbol">${displayName}</div><div class="pair-price" style="color:${priceColor}">$${token.price.toFixed(6)}</div></div><div class="pair-change" style="color:${changeColor}">${isPositive?'+':''}${token.change24h.toFixed(2)}%</div><div class="pair-name">${token.name}</div>`;
                     card.addEventListener('click', () => this.selectToken(token.symbol));
                     container.appendChild(card);
                 });
@@ -2066,15 +2069,16 @@
                 this.state.selectedToken = symbol;
                 document.querySelectorAll('.pair-card').forEach(c => c.classList.remove('active'));
                 document.querySelectorAll('.pair-card').forEach(c => { if (c.querySelector('.pair-symbol')
-                        .textContent === symbol) c.classList.add('active'); });
+                        .textContent.includes(symbol)) c.classList.add('active'); });
                 this.updateOrderSummary();
                 const token = TRADING_CONFIG.tokens.find(t => t.symbol === symbol);
                 if (token) {
-                    document.getElementById('selectedPairTitle').textContent = `${symbol}/SOL`;
+                    const displayName = symbol === 'STRAWBERRY' ? '🍓 STRAWBERRY' : symbol;
+                    document.getElementById('selectedPairTitle').textContent = `${displayName}/SOL`;
                     document.getElementById('tokenPrice').textContent = `$${token.price.toFixed(6)}`;
                     const submitBtn = document.getElementById('submitOrderBtn');
                     if (this.state.isWalletConnected) submitBtn.innerHTML =
-                    `<i class="fas fa-shopping-cart"></i> Buy ${symbol}`;
+                    `<i class="fas fa-shopping-cart"></i> Buy ${displayName}`;
                     else submitBtn.innerHTML = `<i class="fas fa-wallet"></i> Buy Coin`;
                 }
             }
@@ -2085,19 +2089,20 @@
                 const tokenAmount = amount / token.price,
                     fee = 0.25,
                     totalCost = amount + fee;
-                document.getElementById('tokenAmount').textContent = `${tokenAmount.toFixed(2)} ${this.state.selectedToken}`;
+                const displayName = this.state.selectedToken === 'STRAWBERRY' ? 'STRAWBERRY' : this.state.selectedToken;
+                document.getElementById('tokenAmount').textContent = `${tokenAmount.toFixed(2)} ${displayName}`;
                 document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
                 const submitBtn = document.getElementById('submitOrderBtn');
                 submitBtn.disabled = amount < 10 || !this.state.isWalletConnected;
             }
             updateWalletBalance() {
-                const token = TRADING_CONFIG.tokens.find(t => t.symbol === 'BONK');
-                const trampValue = this.state.walletBalances.BONK * token.price;
+                const token = TRADING_CONFIG.tokens.find(t => t.symbol === 'STRAWBERRY');
+                const trampValue = this.state.walletBalances.STRAWBERRY * token.price;
                 const solValue = this.state.walletBalances.SOL * (this.state.solPrice || 25);
                 const totalValue = trampValue + solValue;
                 document.getElementById('walletTotalBalance').textContent = `$${totalValue.toFixed(2)}`;
                 document.getElementById('walletAddress').textContent = this.state.walletAddress;
-                document.getElementById('walletTrampBalance').textContent = this.state.walletBalances.BONK.toFixed(0);
+                document.getElementById('walletTrampBalance').textContent = this.state.walletBalances.STRAWBERRY.toFixed(0);
                 document.getElementById('walletTrampValue').textContent = `$${trampValue.toFixed(2)}`;
                 document.getElementById('walletSolBalance').textContent = this.state.walletBalances.SOL.toFixed(2);
                 document.getElementById('walletSolValue').textContent = `$${solValue.toFixed(2)}`;
@@ -2413,17 +2418,18 @@
                     const pnlSymbol = isPositive ? '+' : '';
                     const progressWidth = Math.min(Math.abs(pos.pnlPercent), 100);
                     const isAtTarget = pos.pnlPercent >= TARGET_MULTIPLIER * 100;
+                    const displayName = pos.tokenSymbol === 'STRAWBERRY' ? '🍓 STRAWBERRY' : pos.tokenSymbol;
                     
                     card.innerHTML = `
                         <div class="position-top">
                             <div class="position-token">
-                                <div class="token-icon">${pos.tokenSymbol.slice(0,3)}</div>
+                                <div class="token-icon">${pos.tokenSymbol === 'STRAWBERRY' ? '🍓' : pos.tokenSymbol.slice(0,3)}</div>
                                 <div>
-                                    <div class="token-name">${pos.tokenSymbol}</div>
+                                    <div class="token-name">${displayName}</div>
                                     <div class="token-address">${pos.contractAddress}</div>
                                 </div>
                             </div>
-                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🚀 TARGET' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
+                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🚀 40x TARGET' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
                         </div>
                         <div class="position-metrics">
                             <div class="position-metric"><div class="metric-label">Entry</div><div class="metric-value">$${pos.entryPrice.toFixed(6)}</div></div>
@@ -2441,23 +2447,19 @@
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
-                    // Calculate target price (40x from entry)
                     const targetPrice = pos.entryPrice * TARGET_MULTIPLIER;
                     
-                    // If already at or above target, cap at target and don't move further
                     if (pos.currentPrice >= targetPrice) {
                         pos.currentPrice = targetPrice;
-                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100; // 3900% = 40x
+                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100;
                         pos.pnlPercent = pos.pnl;
                         return;
                     }
                     
-                    // Normal momentum movement but capped at target
                     const volatility = 0.015;
-                    const change = (Math.random() - 0.3) * volatility * pos.currentPrice; // Slight upward bias
+                    const change = (Math.random() - 0.3) * volatility * pos.currentPrice;
                     let newPrice = pos.currentPrice + change;
                     
-                    // Cap at target price
                     if (newPrice > targetPrice) {
                         newPrice = targetPrice;
                     }
@@ -2503,14 +2505,11 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executing...';
 
-                // Simulate execution with realistic price from the selected token
                 const token = TRADING_CONFIG.tokens.find(t => t.symbol === symbol);
                 const basePrice = token ? token.price : 0.000035;
                 const entryPrice = basePrice * (0.98 + Math.random() * 0.04);
                 const tokenAmount = amount / entryPrice;
-                // Target price is 40x entry
                 const targetPrice = entryPrice * TARGET_MULTIPLIER;
-                // Start at a reasonable price below target
                 const startPrice = entryPrice * (1.05 + Math.random() * 0.15);
                 
                 const newPosition = {
@@ -2618,8 +2617,8 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && document.getElementById('walletModal').style.display === 'block') closeModal();
         });
-        platform.selectToken('BONK');
-        console.log('✅ Crypto Call Out Platform Ready | 40x Target Cap Active');
+        platform.selectToken('STRAWBERRY');
+        console.log('✅ Crypto Call Out Platform Ready | 40x Target Cap Active | 🍓 STRAWBERRY Milkers');
 
         function handleMobileBadge() {
             const mobileBadge = document.querySelector('.mobile-badge');
