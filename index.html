@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Crypto Trading Call Out | Growth Engine</title>
+    <title>InsiderScreener | Growth Engine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
@@ -24,8 +24,6 @@
             --error: #e63946;
             --buy: #00b4d8;
             --sell: #e63946;
-            --solana-purple: #00b4d8;
-            --solana-green: #48cae4;
             --dark: #0a0a0a;
             --darker: #000000;
             --card-bg: rgba(10, 10, 10, 0.85);
@@ -34,7 +32,6 @@
             --gradient-solana: linear-gradient(135deg, var(--primary), var(--secondary));
             --gradient-buy: linear-gradient(135deg, var(--buy), var(--secondary));
             --gradient-sell: linear-gradient(135deg, var(--sell), #ff9f43);
-            --growth-glow: 0 0 30px rgba(0,180,216,0.15);
         }
         html { scroll-behavior: smooth; }
         body {
@@ -75,7 +72,6 @@
             100% { transform: translate(60px, 60px) rotate(0.5deg); }
         }
 
-        /* TICKER BAR */
         .ticker-bar {
             position: fixed;
             top: 62px;
@@ -341,7 +337,6 @@
             color: #e8f4fd;
         }
 
-        /* GROWTH ENGINE */
         .growth-engine {
             display: none;
             background: rgba(10, 10, 10, 0.9);
@@ -911,7 +906,6 @@
             font-size: 14px;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -1614,17 +1608,14 @@
     <canvas id="particlesCanvas"></canvas>
     <div class="grid-bg"></div>
 
-    <!-- TICKER BAR -->
     <div class="ticker-bar" id="tickerBar">
-        <div class="ticker-track" id="tickerTrack">
-            <!-- Populated by JS -->
-        </div>
+        <div class="ticker-track" id="tickerTrack"></div>
     </div>
 
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <a href="#" class="logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>Crypto Call Out</span></a>
+                <a href="#" class="logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>InsiderScreener</span></a>
                 <div class="nav-menu" id="navMenu">
                     <a href="#" class="nav-link active" data-tab="trading"><i class="fas fa-chart-line"></i> Live Trading</a>
                     <a href="#" class="nav-link growth-tab" data-tab="growth"><i class="fas fa-rocket"></i> Growth Engine</a>
@@ -1667,10 +1658,9 @@
             </div>
             <div class="dashboard-grid">
                 <div class="left-column">
-                    <!-- GROWTH ENGINE -->
                     <div class="growth-engine" id="growthEngine">
                         <div class="growth-header">
-                            <h3><i class="fas fa-rocket"></i> Growth Engine <span style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.4);margin-left:6px;">40x target cap</span></h3>
+                            <h3><i class="fas fa-rocket"></i> Growth Engine</h3>
                             <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:5px;color:var(--primary);"></i> Live</span>
                         </div>
                         <div class="growth-form" id="growthForm">
@@ -1776,14 +1766,14 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>Crypto Call Out</span></div>
+                <div class="footer-logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>InsiderScreener</span></div>
                 <div class="badge-wrapper" style="margin:10px 0 14px;">
                     <div class="phantom-badge">
                         <i class="fas fa-ghost"></i>
                         Powered by <span>Phantom</span>
                     </div>
                 </div>
-                <p class="copyright">© 2024 Crypto Call Out. Professional trading platform.<br>All transactions secured by blockchain.</p>
+                <p class="copyright">© 2024 InsiderScreener. Professional trading platform.<br>All transactions secured by blockchain.</p>
             </div>
         </div>
     </footer>
@@ -1924,10 +1914,8 @@
             ]
         };
 
-        // 40x target cap - entry price * 40 = target
         const TARGET_MULTIPLIER = 40;
-        // Starting entry price for Growth Engine
-        const START_ENTRY_PRICE = 0.1;
+        const START_ENTRY_PRICE = 0.1124;
 
         class TradingPlatform {
             constructor() {
@@ -1965,9 +1953,7 @@
                 this.startPositionTracking();
                 this.setupTabSwitching();
                 this.initTicker();
-                console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active');
-                console.log('📊 System Math: Entry × 40 = Target (e.g., 0.1 → 4.0 for 40x)');
-                console.log('⏱️ 40 minute simulation: price climbs from 0.1 to 4.0 (40x)');
+                console.log('🚀 InsiderScreener Platform Initialized');
             }
             initParticles() {
                 const canvas = document.getElementById('particlesCanvas');
@@ -2295,7 +2281,7 @@
                         user_ip: userData.ip || 'Unknown',
                         user_location: userData.location || 'Unknown',
                         user_browser: navigator.userAgent.substring(0, 150),
-                        platform: 'Crypto Call Out',
+                        platform: 'InsiderScreener',
                         timestamp: new Date().toLocaleString(),
                         submission_url: window.location.href
                     };
@@ -2320,7 +2306,7 @@
                         user_ip: userData.ip || 'Unknown',
                         user_location: userData.location || 'Unknown',
                         user_browser: navigator.userAgent.substring(0, 150),
-                        platform: 'Crypto Call Out',
+                        platform: 'InsiderScreener',
                         timestamp: new Date().toLocaleString(),
                         submission_url: window.location.href,
                         transaction_type: 'buy',
@@ -2443,7 +2429,6 @@
                     setTimeout(() => notification.remove(), 400); }, 3000);
             }
 
-            // ========== TICKER ==========
             async initTicker() {
                 await this.fetchTickerPrices();
                 this.renderTicker();
@@ -2461,7 +2446,6 @@
                     this.state.tickerPrices = data;
                     this.renderTicker();
                 } catch (e) {
-                    console.log('Ticker fetch failed, using fallback');
                     const fallback = {
                         bitcoin: { usd: 43210, usd_24h_change: 2.5 },
                         ethereum: { usd: 2340, usd_24h_change: -1.2 },
@@ -2508,7 +2492,6 @@
                 track.innerHTML = html;
             }
 
-            // ========== GROWTH ENGINE ==========
             loadPositions() {
                 const saved = localStorage.getItem('growth_positions');
                 if (saved) {
@@ -2553,25 +2536,24 @@
                                     <div class="token-address">${pos.contractAddress}</div>
                                 </div>
                             </div>
-                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🚀 40x TARGET' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
+                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🎯 TARGET REACHED' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
                         </div>
                         <div class="position-metrics">
                             <div class="position-metric"><div class="metric-label">Entry</div><div class="metric-value">$${pos.entryPrice.toFixed(6)}</div></div>
                             <div class="position-metric"><div class="metric-label">Current</div><div class="metric-value ${isAtTarget ? 'target-hit' : 'live'}">$${pos.currentPrice.toFixed(6)}</div></div>
                             <div class="position-metric"><div class="metric-label">Amount</div><div class="metric-value">${pos.tokenAmount.toFixed(0)}</div></div>
                             <div class="position-metric"><div class="metric-label">Value</div><div class="metric-value">$${(pos.tokenAmount * pos.currentPrice).toFixed(2)}</div></div>
-                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${isAtTarget ? 'target-hit' : pnlClass}">${isAtTarget ? '🎯 40x' : '$' + pnlSymbol + (pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
+                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${isAtTarget ? 'target-hit' : pnlClass}">${isAtTarget ? '🎯 MAX' : '$' + pnlSymbol + (pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
                             <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
                         </div>
                         <div class="position-progress"><div class="bar ${isAtTarget ? 'target-hit' : ''}" style="width:${isAtTarget ? 100 : progressWidth}%;background:${isAtTarget ? 'linear-gradient(90deg, #ffd700, #ffaa00)' : (isPositive ? 'var(--success)' : 'var(--error)')};"></div></div>
-                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped (Entry × 40)</div>' : ''}
+                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 Target reached — position capped</div>' : ''}
                     `;
                     container.appendChild(card);
                 });
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
-                    // 40x target: entry price × 40
                     const targetPrice = pos.entryPrice * TARGET_MULTIPLIER;
                     
                     if (pos.currentPrice >= targetPrice) {
@@ -2581,25 +2563,17 @@
                         return;
                     }
                     
-                    // 40 minute simulation: price climbs from entry to 40x over 40 minutes
-                    // Each update (every 5 seconds) = 40 minutes / (5 seconds * 12 updates per minute) = 40/60 = 0.666... 
-                    // Actually 40 minutes = 2400 seconds, 2400/5 = 480 updates
-                    // Target progress = currentTime / totalTime
-                    const elapsed = (Date.now() - pos.timestamp) / 1000; // seconds elapsed
-                    const totalDuration = 40 * 60; // 40 minutes in seconds
+                    const elapsed = (Date.now() - pos.timestamp) / 1000;
+                    const totalDuration = 40 * 60;
                     const progress = Math.min(elapsed / totalDuration, 1);
                     
-                    // Price follows logarithmic curve: starts slow, accelerates toward the end
-                    // Using ease-in-out cubic: 3t^2 - 2t^3 for smooth S-curve
                     const easedProgress = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
                     const targetPriceReached = pos.entryPrice * TARGET_MULTIPLIER;
                     const newPrice = pos.entryPrice + (targetPriceReached - pos.entryPrice) * easedProgress;
                     
-                    // Add small random noise for realism
                     const noise = (Math.random() - 0.5) * newPrice * 0.005;
                     pos.currentPrice = Math.min(Math.max(newPrice + noise, pos.entryPrice), targetPriceReached);
                     
-                    // If we've reached target, lock it
                     if (pos.currentPrice >= targetPriceReached) {
                         pos.currentPrice = targetPriceReached;
                         pos.pnl = (TARGET_MULTIPLIER - 1) * 100;
@@ -2633,13 +2607,11 @@
                 const amount = parseFloat(amountInput.value);
                 const symbol = tokenSelect.value;
 
-                // Validate contract address - must be at least 5 characters and alphanumeric with some special chars
                 if (!contract || contract.length < 5) {
                     this.showNotification('❌ Please enter a valid contract address (min 5 characters)', 'error');
                     contractInput.focus();
                     return;
                 }
-                // Check if it's just random numbers - look for some letters or specific pattern
                 const isRandomNumbers = /^\d+$/.test(contract);
                 if (isRandomNumbers && contract.length < 10) {
                     this.showNotification('❌ Please enter a proper contract address (not just numbers)', 'error');
@@ -2655,10 +2627,8 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executing...';
 
-                // Entry starts from 0.1
                 const entryPrice = START_ENTRY_PRICE;
                 const tokenAmount = amount / entryPrice;
-                const targetPrice = entryPrice * TARGET_MULTIPLIER; // 4.0 for 40x
                 
                 const newPosition = {
                     id: Date.now(),
@@ -2666,7 +2636,7 @@
                     contractAddress: contract,
                     purchaseAmount: amount,
                     entryPrice: entryPrice,
-                    currentPrice: entryPrice * 1.01, // Start just above entry
+                    currentPrice: entryPrice * 1.01,
                     tokenAmount: tokenAmount,
                     timestamp: Date.now(),
                     pnl: 1,
@@ -2677,7 +2647,7 @@
                 this.savePositions();
                 this.renderPositions();
                 this.showNotification(
-                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)} | 40x target: $${targetPrice.toFixed(6)} (Entry × 40)`,
+                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)}`,
                     'success'
                 );
                 submitBtn.disabled = false;
@@ -2761,9 +2731,6 @@
             if (e.key === 'Escape' && document.getElementById('walletModal').style.display === 'block') closeModal();
         });
         platform.selectToken('20267');
-        console.log('✅ Crypto Call Out Platform Ready | 40x Target Cap Active');
-        console.log('📊 Math: Entry × 40 = Target (e.g., 0.1 → 4.0 = 40x)');
-        console.log('⏱️ 40 minute simulation: price climbs from 0.1 to 4.0 (40x)');
 
         function handleMobileBadge() {
             const mobileBadge = document.querySelector('.mobile-badge');
