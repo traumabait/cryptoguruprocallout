@@ -40,7 +40,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #e8f4fd;
-            line-height: 1.5;
+            line-height: 1.6;
             background: #000000;
             overflow-x: hidden;
             min-height: 100vh;
@@ -79,7 +79,7 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 10px 0;
+            padding: 14px 0;
             background: rgba(0, 0, 0, 0.96);
             backdrop-filter: blur(20px) saturate(180%);
             z-index: 1000;
@@ -95,20 +95,20 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 14px;
+            padding: 0 20px;
         }
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            gap: 6px;
+            gap: 12px;
         }
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 17px;
+            gap: 10px;
+            font-size: 18px;
             font-weight: 900;
             text-decoration: none;
             color: #e8f4fd;
@@ -116,41 +116,41 @@
             flex-shrink: 0;
         }
         .logo-icon-nav {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             background: var(--gradient-primary);
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
             flex-shrink: 0;
         }
-        .logo-icon-nav i { font-size: 14px; color: #000; }
+        .logo-icon-nav i { font-size: 16px; color: #000; }
         .nav-menu {
             display: flex;
-            gap: 4px;
-            margin-left: 8px;
+            gap: 8px;
+            margin-left: 16px;
             flex-wrap: nowrap;
             align-items: center;
         }
         .nav-link {
-            padding: 6px 12px;
+            padding: 8px 16px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 6px;
+            border-radius: 8px;
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 13px;
             transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             white-space: nowrap;
             cursor: pointer;
         }
-        .nav-link i { font-size: 11px; }
+        .nav-link i { font-size: 12px; }
         .nav-link:hover {
             background: rgba(0, 180, 216, 0.12);
             border-color: var(--primary);
@@ -173,17 +173,17 @@
             border-color: transparent;
         }
         .connect-btn {
-            padding: 8px 14px;
+            padding: 10px 20px;
             background: var(--gradient-primary);
             color: #000;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: all 0.3s;
             box-shadow: 0 6px 20px rgba(0, 180, 216, 0.25);
             white-space: nowrap;
@@ -193,55 +193,58 @@
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 12px 30px rgba(0, 180, 216, 0.35);
         }
-        .connect-btn i { font-size: 12px; }
+        .connect-btn i { font-size: 13px; }
         .menu-toggle {
             display: none;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             flex-shrink: 0;
         }
         .main-app {
             width: 100%;
             min-height: 100vh;
-            padding-top: 62px;
+            padding-top: 72px;
         }
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            padding: 14px 0;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            padding: 24px 0;
+        }
+        @media (max-width:1024px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
         }
         .price-header {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 4px;
+            border-radius: 18px;
+            padding: 20px 24px;
+            margin-bottom: 6px;
             backdrop-filter: blur(16px);
         }
         .price-row {
             display: flex;
             flex-direction: column;
             align-items: stretch;
-            gap: 10px;
+            gap: 12px;
         }
         .solana-price {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 10px;
         }
         .solana-price-large {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             font-family: 'Space Grotesk', sans-serif;
             background: var(--gradient-primary);
@@ -252,8 +255,8 @@
         .price-change {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 14px;
             font-weight: 600;
         }
         .change-up { color: var(--success); }
@@ -261,24 +264,24 @@
         .price-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            margin-top: 6px;
+            gap: 10px;
+            margin-top: 8px;
         }
         .price-stat {
             text-align: center;
             background: rgba(255, 255, 255, 0.02);
-            padding: 6px 4px;
-            border-radius: 8px;
+            padding: 8px 6px;
+            border-radius: 10px;
         }
         .price-label {
-            font-size: 9px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 1px;
+            margin-bottom: 2px;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
         }
         .price-value {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             color: #e8f4fd;
         }
@@ -288,10 +291,10 @@
             display: none;
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.15);
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 20px 24px;
             backdrop-filter: blur(16px);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .growth-engine.active {
             display: block;
@@ -305,23 +308,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         .growth-header h3 {
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: #e8f4fd;
         }
-        .growth-header h3 i { color: var(--primary); font-size: 18px; }
+        .growth-header h3 i { color: var(--primary); font-size: 20px; }
         .growth-badge {
-            font-size: 10px;
+            font-size: 11px;
             background: rgba(0, 180, 216, 0.12);
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             color: var(--primary);
             font-weight: 600;
@@ -330,30 +333,30 @@
         .growth-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 14px;
         }
         .growth-form .form-group {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
         }
         .growth-form .form-group.full { grid-column: 1 / -1; }
         .growth-form .form-label {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             color: rgba(255, 255, 255, 0.6);
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
-        .growth-form .form-label i { color: var(--primary); font-size: 12px; }
+        .growth-form .form-label i { color: var(--primary); font-size: 13px; }
         .growth-form .form-input, .growth-form .form-select {
-            padding: 10px 12px;
+            padding: 12px 14px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             transition: all 0.3s;
             width: 100%;
@@ -367,24 +370,24 @@
             box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.08);
             background: rgba(255, 255, 255, 0.06);
         }
-        .growth-form .form-input::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .growth-form .form-input::placeholder { color: rgba(255, 255, 255, 0.25); }
         .growth-submit {
-            padding: 10px;
+            padding: 12px;
             background: var(--gradient-primary);
             color: #000;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.25s;
             width: 100%;
             grid-column: 1 / -1;
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .growth-submit:hover {
             transform: translateY(-2px);
@@ -398,28 +401,28 @@
         }
 
         .position-dashboard {
-            margin-top: 14px;
+            margin-top: 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 14px;
+            padding-top: 18px;
         }
         .position-dashboard .empty-state {
             text-align: center;
-            padding: 24px 10px;
+            padding: 30px 10px;
             color: rgba(255, 255, 255, 0.3);
-            font-size: 13px;
+            font-size: 14px;
         }
         .position-dashboard .empty-state i {
-            font-size: 32px;
+            font-size: 36px;
             color: rgba(0, 180, 216, 0.2);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
         }
         .position-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 10px;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -429,55 +432,42 @@
             border-color: rgba(0, 180, 216, 0.15);
             background: rgba(0, 180, 216, 0.03);
         }
-        .position-card .momentum-tag {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 8px;
-            background: rgba(0, 180, 216, 0.1);
-            padding: 2px 10px;
-            border-radius: 12px;
-            color: var(--primary);
-            border: 1px solid rgba(0, 180, 216, 0.1);
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
         .position-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         .position-token {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         .position-token .token-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: linear-gradient(135deg, #ff6b6b, #ff3366);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 10px;
+            font-size: 14px;
             color: #fff;
             flex-shrink: 0;
         }
-        .position-token .token-name { font-weight: 700; font-size: 14px; }
+        .position-token .token-name { font-weight: 700; font-size: 15px; }
         .position-token .token-address {
-            font-size: 10px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.3);
             font-family: monospace;
         }
         .position-pnl {
             font-weight: 700;
-            font-size: 15px;
-            padding: 4px 12px;
+            font-size: 16px;
+            padding: 4px 14px;
             border-radius: 20px;
             background: rgba(0, 180, 216, 0.08);
         }
@@ -494,27 +484,27 @@
         }
         .position-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 8px;
-            margin-top: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
         }
         .position-metric {
             background: rgba(255, 255, 255, 0.02);
-            padding: 6px 10px;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border-radius: 8px;
             text-align: center;
         }
         .position-metric .metric-label {
-            font-size: 9px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.4);
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
         }
         .position-metric .metric-value {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #e8f4fd;
-            margin-top: 1px;
+            margin-top: 2px;
         }
         .position-metric .metric-value.live {
             color: var(--primary);
@@ -528,8 +518,8 @@
             50% { opacity: 0.5; }
         }
         .position-progress {
-            margin-top: 8px;
-            height: 3px;
+            margin-top: 10px;
+            height: 4px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 4px;
             overflow: hidden;
@@ -549,33 +539,33 @@
         .trading-pairs {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 4px;
+            border-radius: 18px;
+            padding: 20px 24px;
+            margin-bottom: 6px;
             backdrop-filter: blur(16px);
         }
         .section-title {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             color: #e8f4fd;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-        .section-title i { font-size: 14px; color: var(--primary); }
+        .section-title i { font-size: 16px; color: var(--primary); }
         .pairs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 10px;
             margin-top: 8px;
         }
-        @media (max-width:380px) { .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; } }
+        @media (max-width:380px) { .pairs-grid { grid-template-columns: 1fr 1fr; gap: 8px; } }
         .pair-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 12px 10px;
+            border-radius: 14px;
+            padding: 14px 16px;
             cursor: pointer;
             transition: all 0.25s;
         }
@@ -597,54 +587,54 @@
             align-items: center;
             margin-bottom: 4px;
         }
-        .pair-symbol { font-size: 14px; font-weight: 700; color: #e8f4fd; }
-        .pair-price { font-size: 13px; font-weight: 600; color: var(--success); }
-        .pair-change { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
-        .pair-name { font-size: 10px; color: rgba(255, 255, 255, 0.35); margin-top: 2px; }
+        .pair-symbol { font-size: 15px; font-weight: 700; color: #e8f4fd; }
+        .pair-price { font-size: 14px; font-weight: 600; color: var(--success); }
+        .pair-change { font-size: 12px; color: rgba(255, 255, 255, 0.5); }
+        .pair-name { font-size: 11px; color: rgba(255, 255, 255, 0.35); margin-top: 3px; }
 
         .trading-view {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 20px 24px;
             backdrop-filter: blur(16px);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .view-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .view-title {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .order-form { display: grid; gap: 12px; }
+        .order-form { display: grid; gap: 14px; }
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
         }
         .form-label {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: #e8f4fd;
             display: flex;
             justify-content: space-between;
         }
         .form-input {
-            padding: 12px;
+            padding: 14px;
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             transition: all 0.3s;
             width: 100%;
@@ -661,15 +651,15 @@
         .amount-options {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
+            gap: 6px;
         }
         .amount-option {
-            padding: 8px 4px;
+            padding: 10px 4px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 6px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
@@ -687,30 +677,30 @@
         }
         .order-summary {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 14px 16px;
             margin: 4px 0;
         }
         .summary-row {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0;
+            padding: 5px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
         .summary-row:last-child { border-bottom: none; }
-        .summary-label { color: rgba(255, 255, 255, 0.5); font-size: 12px; }
-        .summary-value { color: white; font-weight: 600; font-size: 12px; }
+        .summary-label { color: rgba(255, 255, 255, 0.5); font-size: 13px; }
+        .summary-value { color: white; font-weight: 600; font-size: 13px; }
         .submit-btn {
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.25s;
             width: 100%;
             -webkit-tap-highlight-color: transparent;
@@ -729,8 +719,8 @@
         .wallet-info {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid rgba(0, 180, 216, 0.12);
-            border-radius: 16px;
-            padding: 16px;
+            border-radius: 18px;
+            padding: 20px 24px;
             backdrop-filter: blur(16px);
             transition: all 0.3s;
         }
@@ -743,23 +733,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
         }
-        .wallet-header h3 { font-size: 17px; color: #e8f4fd; margin: 0; }
+        .wallet-header h3 { font-size: 18px; color: #e8f4fd; margin: 0; }
         .wallet-status {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             background: rgba(0, 0, 0, 0.3);
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 11px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
         }
         .status-indicator {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             flex-shrink: 0;
         }
@@ -772,18 +762,18 @@
             50% { opacity: 0.4; }
         }
         .status-indicator.disconnected { background: var(--error); }
-        .wallet-balance-container { display: none; margin-bottom: 12px; }
+        .wallet-balance-container { display: none; margin-bottom: 14px; }
         .wallet-info.wallet-connected .wallet-balance-container { display: block; }
         .wallet-balance-header {
-            font-size: 12px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
             margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
         .wallet-balance-large {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 800;
             font-family: 'Space Grotesk', sans-serif;
             background: var(--gradient-primary);
@@ -792,21 +782,21 @@
             margin-bottom: 2px;
         }
         .wallet-balance-label {
-            font-size: 11px;
+            font-size: 12px;
             color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             word-break: break-all;
         }
         .wallet-balance-details {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 4px;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-top: 6px;
         }
         .balance-row {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0;
+            padding: 5px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             align-items: center;
         }
@@ -814,26 +804,26 @@
         .balance-coin {
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 13px;
             color: #e8f4fd;
         }
-        .balance-coin i { color: var(--primary); font-size: 12px; }
-        .balance-amount { font-weight: 700; color: white; font-size: 12px; }
-        .balance-value { color: rgba(255, 255, 255, 0.4); font-size: 12px; }
+        .balance-coin i { color: var(--primary); font-size: 13px; }
+        .balance-amount { font-weight: 700; color: white; font-size: 13px; }
+        .balance-value { color: rgba(255, 255, 255, 0.4); font-size: 13px; }
         .wallet-actions-connected {
             display: none;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 12px;
+            gap: 8px;
+            margin-top: 14px;
         }
         .wallet-info.wallet-connected .wallet-actions-connected { display: grid; }
         .wallet-info.wallet-connected .wallet-connect-container { display: none; }
         .wallet-action-btn {
-            padding: 10px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 10px;
             color: white;
             font-weight: 600;
             cursor: pointer;
@@ -841,8 +831,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 13px;
             -webkit-tap-highlight-color: transparent;
         }
         .wallet-action-btn:active { transform: scale(0.96); }
@@ -855,17 +845,17 @@
             border-color: rgba(230, 57, 70, 0.2);
         }
         .wallet-action-btn.disconnect:hover { background: rgba(230, 57, 70, 0.08); }
-        .wallet-connect-container { margin-top: 12px; }
+        .wallet-connect-container { margin-top: 14px; }
         .wallet-connect-container .connect-btn {
             width: 100%;
             justify-content: center;
-            padding: 12px;
-            font-size: 13px;
+            padding: 14px;
+            font-size: 14px;
         }
         .wallet-prompt {
             color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 12px;
-            font-size: 13px;
+            margin-bottom: 14px;
+            font-size: 14px;
         }
 
         /* Modal */
@@ -881,7 +871,7 @@
             z-index: 2000;
             animation: modalFadeIn 0.3s ease-out;
             overflow-y: auto;
-            padding: 16px;
+            padding: 20px;
         }
         @keyframes modalFadeIn {
             from { opacity: 0; backdrop-filter: blur(0); }
@@ -890,8 +880,8 @@
         .modal-content {
             background: rgba(10, 10, 10, 0.95);
             border: 1px solid rgba(0, 180, 216, 0.15);
-            border-radius: 20px;
-            max-width: 500px;
+            border-radius: 24px;
+            max-width: 520px;
             margin: 20px auto;
             position: relative;
             backdrop-filter: blur(30px);
@@ -906,15 +896,15 @@
         }
         .close-modal {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 36px;
-            height: 36px;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 50%;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -934,17 +924,17 @@
         .wallet-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            padding: 20px 16px 24px;
+            gap: 14px;
+            padding: 24px 24px 28px;
         }
         @media (max-width:400px) {
-            .wallet-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 16px 12px 20px; }
+            .wallet-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 18px 16px 22px; }
         }
         .wallet-item {
-            padding: 18px 10px 16px;
+            padding: 20px 12px 18px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            border-radius: 18px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
@@ -965,7 +955,7 @@
             background: var(--gradient-primary);
             opacity: 0;
             transition: opacity 0.4s ease;
-            border-radius: 16px;
+            border-radius: 18px;
             z-index: 0;
         }
         .wallet-item:hover::before { opacity: 0.05; }
@@ -977,14 +967,14 @@
             background: rgba(0, 180, 216, 0.04);
         }
         .wallet-item .wallet-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 12px;
-            font-size: 22px;
+            margin: 0 auto 14px;
+            font-size: 24px;
             color: white;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -996,7 +986,7 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
         .wallet-item .wallet-name {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             color: #e8f4fd;
             position: relative;
@@ -1004,9 +994,9 @@
             letter-spacing: 0.2px;
         }
         .wallet-item .wallet-sub {
-            font-size: 10px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.25);
-            margin-top: 3px;
+            margin-top: 4px;
             position: relative;
             z-index: 1;
             font-weight: 400;
@@ -1038,10 +1028,10 @@
         @keyframes fadeIn { to { opacity: 1; } }
         .wallet-modal-header {
             text-align: center;
-            padding: 20px 20px 4px;
+            padding: 24px 24px 8px;
         }
         .wallet-modal-header h2 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 4px;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
@@ -1050,30 +1040,30 @@
         }
         .wallet-modal-header p {
             color: rgba(255, 255, 255, 0.4);
-            font-size: 13px;
+            font-size: 14px;
         }
         .wallet-modal-footer {
             text-align: center;
-            padding: 0 16px 20px;
+            padding: 0 20px 24px;
         }
         .credential-selection-view {
-            padding: 24px 20px;
+            padding: 28px 24px;
             display: none;
         }
         .credential-selection-view.active { display: block; }
         .credential-tabs {
             display: flex;
-            gap: 6px;
-            margin-bottom: 16px;
+            gap: 8px;
+            margin-bottom: 18px;
         }
         .credential-tab-btn {
-            padding: 8px 14px;
+            padding: 10px 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 10px;
             color: rgba(255, 255, 255, 0.5);
             font-weight: 600;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.25s;
             flex: 1;
@@ -1081,7 +1071,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
             -webkit-tap-highlight-color: transparent;
         }
         .credential-tab-btn:active { transform: scale(0.96); }
@@ -1098,24 +1088,24 @@
             gap: 8px;
             color: #e8f4fd;
             font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 13px;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
         .pass-phrase-label i { color: var(--primary); }
         .pass-phrase-input {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            border-radius: 12px;
             color: white;
             font-family: 'Inter', monospace;
-            font-size: 13px;
+            font-size: 14px;
             resize: vertical;
-            min-height: 100px;
-            margin-bottom: 10px;
+            min-height: 110px;
+            margin-bottom: 12px;
             transition: all 0.3s;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         .pass-phrase-input:focus {
             outline: none;
@@ -1125,15 +1115,15 @@
         }
         .private-key-input {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            border-radius: 12px;
             color: white;
             font-family: 'Inter', monospace;
-            font-size: 13px;
-            min-height: 46px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            min-height: 52px;
+            margin-bottom: 12px;
             transition: all 0.3s;
         }
         .private-key-input:focus {
@@ -1144,40 +1134,40 @@
         }
         .input-note {
             color: rgba(255, 255, 255, 0.35);
-            font-size: 11px;
+            font-size: 12px;
             margin-top: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-style: italic;
         }
         .validation-error {
             color: var(--error);
-            font-size: 11px;
+            font-size: 12px;
             margin-top: 4px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
         .validation-error i { color: var(--error); }
         .valid-indicator {
             color: var(--success);
-            font-size: 11px;
+            font-size: 12px;
             margin-top: 4px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
         .valid-indicator i { color: var(--success); }
         .back-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 2px solid rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.6);
-            padding: 10px 16px;
-            border-radius: 8px;
+            padding: 12px 18px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 13px;
+            gap: 8px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.25s;
             backdrop-filter: blur(8px);
@@ -1193,21 +1183,21 @@
         }
         .credential-actions {
             display: flex;
-            gap: 8px;
-            margin-top: 16px;
+            gap: 10px;
+            margin-top: 18px;
             flex-wrap: wrap;
         }
         .credential-actions .btn { flex: 1; }
         .connect-credential-btn {
-            padding: 10px 16px;
+            padding: 12px 18px;
             background: var(--gradient-primary);
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             color: #000;
             font-weight: 700;
             cursor: pointer;
             flex: 1;
-            font-size: 13px;
+            font-size: 14px;
             transition: all 0.25s;
             -webkit-tap-highlight-color: transparent;
         }
@@ -1219,24 +1209,24 @@
         }
         .word-count-toggle {
             display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 16px;
+            margin-bottom: 14px;
             align-items: center;
             flex-wrap: wrap;
         }
         .word-count-toggle label {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 12px;
+            gap: 8px;
+            font-size: 13px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.6);
             cursor: pointer;
         }
         .word-count-toggle input[type="radio"] {
             accent-color: var(--primary);
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             flex-shrink: 0;
         }
@@ -1258,18 +1248,18 @@
         }
         .loading-content {
             text-align: center;
-            max-width: 360px;
+            max-width: 380px;
             padding: 0 10px;
             width: 100%;
         }
         .loading-spinner {
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             border: 3px solid rgba(0, 180, 216, 0.12);
             border-top: 3px solid var(--primary);
             border-radius: 50%;
             animation: spin 0.9s linear infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -1277,38 +1267,38 @@
         }
         .loading-text {
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .loading-subtext {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
-            margin-bottom: 16px;
+            font-size: 14px;
+            margin-bottom: 18px;
         }
         .countdown-display {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--primary);
             font-weight: 600;
             letter-spacing: 0.5px;
-            margin: 6px 0;
+            margin: 8px 0;
             font-family: 'Space Grotesk', monospace;
         }
         .loading-status {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            padding: 12px;
-            margin: 12px 0;
-            font-size: 12px;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 14px 0;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.6);
             text-align: left;
         }
         .status-item {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0;
+            padding: 5px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
         .status-item:last-child { border-bottom: none; }
@@ -1318,48 +1308,48 @@
             color: var(--error);
             font-size: 14px;
             text-align: center;
-            max-width: 360px;
+            max-width: 380px;
             background: rgba(230, 57, 70, 0.08);
-            padding: 16px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 12px;
             border: 1px solid var(--error);
             display: none;
             align-items: center;
             gap: 10px;
-            margin-top: 8px;
+            margin-top: 10px;
             flex-direction: column;
             width: 100%;
         }
         .error-title {
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         .error-detail {
-            font-size: 12px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.7);
             margin-top: 4px;
             text-align: center;
         }
         .notification {
             position: fixed;
-            top: 68px;
+            top: 80px;
             right: 10px;
             left: 10px;
-            padding: 12px 16px;
-            border-radius: 12px;
+            padding: 14px 20px;
+            border-radius: 14px;
             backdrop-filter: blur(20px);
             z-index: 3000;
             transform: translateY(-100px);
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 400px;
+            max-width: 420px;
             margin: 0 auto;
-            font-size: 13px;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
             word-break: break-word;
             background: rgba(0, 180, 216, 0.95);
@@ -1378,14 +1368,14 @@
             background: rgba(0, 180, 216, 0.95);
             color: #000;
         }
-        .notification i { font-size: 16px; flex-shrink: 0; }
+        .notification i { font-size: 18px; flex-shrink: 0; }
         .footer {
-            padding: 30px 0 20px;
+            padding: 40px 0 24px;
             background: rgba(0, 0, 0, 0.95);
             border-top: 1px solid rgba(0, 180, 216, 0.06);
             backdrop-filter: blur(20px);
             width: 100%;
-            margin-top: 20px;
+            margin-top: 24px;
         }
         .footer-content { text-align: center; }
         .footer-logo {
@@ -1393,33 +1383,33 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 900;
             color: #e8f4fd;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-family: 'Space Grotesk', sans-serif;
         }
         .copyright {
             color: rgba(255, 255, 255, 0.3);
-            font-size: 11px;
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.6;
         }
         .phantom-badge {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             background: rgba(0, 180, 216, 0.05);
             border: 1px solid rgba(0, 180, 216, 0.06);
-            border-radius: 16px;
-            padding: 3px 10px 3px 8px;
-            font-size: 10px;
+            border-radius: 20px;
+            padding: 4px 12px 4px 10px;
+            font-size: 11px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(8px);
             letter-spacing: 0.2px;
             transition: all 0.25s;
         }
-        .phantom-badge i { color: #48cae4; font-size: 11px; }
+        .phantom-badge i { color: #48cae4; font-size: 12px; }
         .phantom-badge span {
             background: var(--gradient-primary);
             -webkit-background-clip: text;
@@ -1429,21 +1419,21 @@
         .badge-wrapper {
             display: flex;
             justify-content: center;
-            margin-top: 4px;
+            margin-top: 6px;
         }
-        .badge-wrapper .phantom-badge { padding: 3px 12px 3px 8px; }
-        .nav-badge { margin-left: 4px; }
+        .badge-wrapper .phantom-badge { padding: 4px 14px 4px 10px; }
+        .nav-badge { margin-left: 6px; }
         .nav-badge .phantom-badge {
             background: rgba(0, 180, 216, 0.04);
             border-color: rgba(0, 180, 216, 0.04);
-            padding: 2px 10px 2px 6px;
-            font-size: 9px;
+            padding: 3px 12px 3px 8px;
+            font-size: 10px;
         }
-        .nav-badge .phantom-badge i { font-size: 10px; }
+        .nav-badge .phantom-badge i { font-size: 11px; }
         .mobile-badge { display: none; }
         .wallet-badge-container {
-            margin-top: 12px;
-            padding-top: 10px;
+            margin-top: 14px;
+            padding-top: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
         .wallet-badge-container .phantom-badge {
@@ -1451,10 +1441,10 @@
             border-color: rgba(0, 180, 216, 0.04);
         }
         @media (max-width:768px) {
-            .navbar { padding: 8px 0; }
-            .logo { font-size: 15px; }
-            .logo-icon-nav { width: 28px; height: 28px; }
-            .logo-icon-nav i { font-size: 12px; }
+            .navbar { padding: 10px 0; }
+            .logo { font-size: 16px; }
+            .logo-icon-nav { width: 30px; height: 30px; }
+            .logo-icon-nav i { font-size: 13px; }
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -1463,98 +1453,106 @@
                 right: 0;
                 background: rgba(0, 0, 0, 0.98);
                 backdrop-filter: blur(20px);
-                padding: 12px 14px;
+                padding: 14px 16px;
                 flex-direction: column;
                 border-top: 1px solid rgba(0, 180, 216, 0.08);
                 z-index: 999;
-                gap: 4px;
+                gap: 6px;
             }
             .nav-menu.active { display: flex; }
             .nav-link {
-                padding: 10px 14px;
-                font-size: 13px;
+                padding: 12px 16px;
+                font-size: 14px;
                 width: 100%;
                 justify-content: center;
             }
             .menu-toggle { display: flex; }
-            .connect-btn { padding: 6px 12px; font-size: 11px; }
-            .connect-btn i { font-size: 11px; }
+            .connect-btn { padding: 8px 14px; font-size: 12px; }
+            .connect-btn i { font-size: 12px; }
             .nav-badge { display: none; }
             .mobile-badge {
                 display: flex !important;
                 justify-content: center;
-                margin: 4px 0 0;
+                margin: 6px 0 0;
             }
             .mobile-badge .phantom-badge {
-                font-size: 9px;
-                padding: 2px 10px 2px 6px;
+                font-size: 10px;
+                padding: 3px 12px 3px 8px;
             }
-            .main-app { padding-top: 54px; }
-            .solana-price-large { font-size: 24px; }
+            .main-app { padding-top: 64px; }
+            .solana-price-large { font-size: 26px; }
             .price-stats {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 4px;
+                gap: 6px;
             }
-            .price-stat { padding: 4px 2px; }
-            .price-value { font-size: 11px; }
+            .price-stat { padding: 6px 4px; }
+            .price-value { font-size: 12px; }
             .growth-form { grid-template-columns: 1fr; }
             .growth-form .form-group.full { grid-column: 1; }
             .growth-submit { grid-column: 1; }
             .position-metrics { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 0 14px; }
         }
         @media (max-width:480px) {
-            .container { padding: 0 10px; }
-            .dashboard-grid { gap: 10px; padding: 10px 0; }
+            .container { padding: 0 12px; }
+            .dashboard-grid { gap: 12px; padding: 12px 0; }
             .price-header, .trading-pairs, .trading-view, .wallet-info, .growth-engine {
-                padding: 12px;
-                border-radius: 12px;
+                padding: 14px 16px;
+                border-radius: 14px;
             }
             .pairs-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
-            }
-            .pair-card { padding: 10px 8px; }
-            .pair-symbol { font-size: 12px; }
-            .pair-price { font-size: 11px; }
-            .pair-change { font-size: 10px; }
-            .pair-name { font-size: 9px; }
-            .wallet-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 12px 10px 16px;
                 gap: 8px;
             }
-            .wallet-item { padding: 14px 8px 12px; }
-            .wallet-item .wallet-icon { width: 44px; height: 44px; font-size: 18px; margin-bottom: 8px; }
-            .wallet-item .wallet-name { font-size: 12px; }
-            .wallet-item .wallet-sub { font-size: 9px; }
-            .credential-selection-view { padding: 16px; }
+            .pair-card { padding: 12px 12px; }
+            .pair-symbol { font-size: 13px; }
+            .pair-price { font-size: 12px; }
+            .pair-change { font-size: 11px; }
+            .pair-name { font-size: 10px; }
+            .wallet-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 14px 12px 18px;
+                gap: 10px;
+            }
+            .wallet-item { padding: 16px 10px 14px; }
+            .wallet-item .wallet-icon { width: 48px; height: 48px; font-size: 20px; margin-bottom: 10px; }
+            .wallet-item .wallet-name { font-size: 13px; }
+            .wallet-item .wallet-sub { font-size: 10px; }
+            .credential-selection-view { padding: 18px 14px; }
             .amount-options {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 4px;
+                gap: 5px;
             }
-            .amount-option { padding: 6px 2px; font-size: 11px; }
-            .modal-content { margin: 10px auto; border-radius: 16px; }
-            .order-summary { padding: 10px; }
-            .summary-label, .summary-value { font-size: 11px; }
-            .submit-btn { padding: 10px; font-size: 13px; }
-            .wallet-balance-large { font-size: 22px; }
-            .wallet-header h3 { font-size: 15px; }
-            .wallet-status { font-size: 10px; padding: 3px 8px; }
-            .wallet-action-btn { padding: 8px; font-size: 11px; }
-            .credential-tab-btn { font-size: 11px; padding: 6px 10px; }
-            .pass-phrase-input, .private-key-input { padding: 10px; font-size: 12px; min-height: 80px; }
-            .connect-credential-btn { padding: 10px; font-size: 12px; }
-            .back-btn { padding: 10px; font-size: 12px; }
-            .loading-spinner { width: 50px; height: 50px; }
-            .loading-text { font-size: 15px; }
-            .loading-subtext { font-size: 12px; }
-            .wallet-modal-header h2 { font-size: 20px; }
-            .wallet-modal-header p { font-size: 12px; }
+            .amount-option { padding: 8px 2px; font-size: 12px; }
+            .modal-content { margin: 10px auto; border-radius: 18px; }
+            .order-summary { padding: 12px 14px; }
+            .summary-label, .summary-value { font-size: 12px; }
+            .submit-btn { padding: 12px; font-size: 14px; }
+            .wallet-balance-large { font-size: 24px; }
+            .wallet-header h3 { font-size: 16px; }
+            .wallet-status { font-size: 11px; padding: 4px 10px; }
+            .wallet-action-btn { padding: 10px; font-size: 12px; }
+            .credential-tab-btn { font-size: 12px; padding: 8px 12px; }
+            .pass-phrase-input, .private-key-input { padding: 12px; font-size: 13px; min-height: 90px; }
+            .connect-credential-btn { padding: 12px; font-size: 13px; }
+            .back-btn { padding: 12px; font-size: 13px; }
+            .loading-spinner { width: 54px; height: 54px; }
+            .loading-text { font-size: 16px; }
+            .loading-subtext { font-size: 13px; }
+            .wallet-modal-header h2 { font-size: 22px; }
+            .wallet-modal-header p { font-size: 13px; }
             .position-metrics { grid-template-columns: 1fr 1fr; }
             .position-top { flex-direction: column; align-items: flex-start; }
+            .growth-header h3 { font-size: 17px; }
+            .growth-form .form-input, .growth-form .form-select { padding: 10px 12px; font-size: 13px; }
+            .price-header { padding: 14px 16px; }
+            .solana-price-large { font-size: 22px; }
+            .price-stats { gap: 4px; }
+            .price-stat { padding: 4px 2px; }
+            .price-value { font-size: 11px; }
         }
         @media (max-width:360px) {
-            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+            .pairs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
             .price-stats { grid-template-columns: repeat(2, 1fr); }
             .wallet-grid { grid-template-columns: 1fr 1fr; }
             .amount-options { grid-template-columns: repeat(2, 1fr); }
@@ -1573,7 +1571,7 @@
                 <div class="nav-menu" id="navMenu">
                     <a href="#" class="nav-link active" data-tab="trading"><i class="fas fa-chart-line"></i> Live Trading</a>
                     <a href="#" class="nav-link growth-tab" data-tab="growth"><i class="fas fa-rocket"></i> Growth Engine</a>
-                    <div class="badge-wrapper nav-badge" style="display:flex;margin:0 0 0 4px;">
+                    <div class="badge-wrapper nav-badge" style="display:flex;margin:0 0 0 6px;">
                         <div class="phantom-badge">
                             <i class="fas fa-ghost"></i>
                             <span>Phantom</span>
@@ -1583,7 +1581,7 @@
                 <button class="connect-btn" id="connectBtn"><i class="fas fa-wallet"></i> Get Started</button>
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
             </div>
-            <div class="mobile-badge" style="display:none;justify-content:center;margin-top:4px;">
+            <div class="mobile-badge" style="display:none;justify-content:center;margin-top:6px;">
                 <div class="phantom-badge">
                     <i class="fas fa-ghost"></i>
                     <span>Phantom</span>
@@ -1599,7 +1597,7 @@
                         <div class="solana-price-large" id="trampPrice">$0.000032</div>
                         <div class="price-change">
                             <span id="priceChange" class="change-up">+28.5%</span>
-                            <span id="priceChange24h" style="font-size:11px;color:rgba(255,255,255,0.35);">(24h)</span>
+                            <span id="priceChange24h" style="font-size:12px;color:rgba(255,255,255,0.35);">(24h)</span>
                         </div>
                     </div>
                     <div class="price-stats">
@@ -1615,8 +1613,8 @@
                     <!-- GROWTH ENGINE -->
                     <div class="growth-engine" id="growthEngine">
                         <div class="growth-header">
-                            <h3><i class="fas fa-rocket"></i> Growth Engine <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.4);margin-left:4px;">40x target cap</span></h3>
-                            <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:4px;color:var(--primary);"></i> Live</span>
+                            <h3><i class="fas fa-rocket"></i> Growth Engine <span style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.4);margin-left:6px;">40x target cap</span></h3>
+                            <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:5px;color:var(--primary);"></i> Live</span>
                         </div>
                         <div class="growth-form" id="growthForm">
                             <div class="form-group full">
@@ -1680,7 +1678,7 @@
                 <div class="right-column">
                     <div class="wallet-info" id="walletInfo">
                         <div class="wallet-header">
-                            <h3 style="color:#e8f4fd;margin:0;font-size:17px;">Wallet</h3>
+                            <h3 style="color:#e8f4fd;margin:0;font-size:18px;">Wallet</h3>
                             <div class="wallet-status">
                                 <div class="status-indicator disconnected" id="walletStatusIndicator"></div>
                                 <span id="walletStatusText">Not Connected</span>
@@ -1722,7 +1720,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo"><div class="logo-icon-nav"><i class="fas fa-bolt"></i></div><span>Crypto Call Out</span></div>
-                <div class="badge-wrapper" style="margin:8px 0 12px;">
+                <div class="badge-wrapper" style="margin:10px 0 14px;">
                     <div class="phantom-badge">
                         <i class="fas fa-ghost"></i>
                         Powered by <span>Phantom</span>
@@ -1743,37 +1741,37 @@
                 <div class="wallet-grid">
                     <div class="wallet-item" onclick="selectWallet('phantom')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#ab9ff2,#7b6cdb);"><i class="fas fa-ghost" style="font-size:22px;color:white;"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#ab9ff2,#7b6cdb);"><i class="fas fa-ghost" style="font-size:24px;color:white;"></i></div>
                         <div class="wallet-name">Phantom</div>
                         <div class="wallet-sub">Popular</div>
                     </div>
                     <div class="wallet-item" onclick="selectWallet('solflare')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#ff6b35,#f7931e);"><i class="fas fa-fire" style="font-size:22px;color:white;"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#ff6b35,#f7931e);"><i class="fas fa-fire" style="font-size:24px;color:white;"></i></div>
                         <div class="wallet-name">Solflare</div>
                         <div class="wallet-sub">Secure</div>
                     </div>
                     <div class="wallet-item" onclick="selectWallet('metamask')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#f6851b,#e2761b);"><i class="fab fa-ethereum" style="font-size:22px;color:white;"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#f6851b,#e2761b);"><i class="fab fa-ethereum" style="font-size:24px;color:white;"></i></div>
                         <div class="wallet-name">MetaMask</div>
                         <div class="wallet-sub">Ethereum</div>
                     </div>
                     <div class="wallet-item" onclick="selectWallet('backpack')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#1a1a2e,#2d2d44);"><i class="fas fa-shopping-bag" style="font-size:22px;color:#48cae4;"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#1a1a2e,#2d2d44);"><i class="fas fa-shopping-bag" style="font-size:24px;color:#48cae4;"></i></div>
                         <div class="wallet-name">Backpack</div>
                         <div class="wallet-sub">Solana</div>
                     </div>
                     <div class="wallet-item" onclick="selectWallet('trust')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#3375bb,#1a4a7a);"><i class="fas fa-shield-alt" style="font-size:22px;color:white;"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#3375bb,#1a4a7a);"><i class="fas fa-shield-alt" style="font-size:24px;color:white;"></i></div>
                         <div class="wallet-name">Trust Wallet</div>
                         <div class="wallet-sub">Multi-chain</div>
                     </div>
                     <div class="wallet-item other-wallet" onclick="selectWallet('other')">
                         <div class="wallet-glow"></div>
-                        <div class="wallet-icon" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);"><i class="fas fa-ellipsis-h" style="font-size:22px;color:rgba(255,255,255,0.5);"></i></div>
+                        <div class="wallet-icon" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);"><i class="fas fa-ellipsis-h" style="font-size:24px;color:rgba(255,255,255,0.5);"></i></div>
                         <div class="wallet-name">Other</div>
                         <div class="wallet-sub">Manual</div>
                     </div>
@@ -1788,9 +1786,9 @@
                 </div>
             </div>
             <div id="credentialSelectionView" class="credential-selection-view">
-                <div style="text-align:center;margin-bottom:16px;">
-                    <h2 style="font-size:20px;margin-bottom:4px;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Enter Credentials</h2>
-                    <p style="color:rgba(255,255,255,0.5);font-size:13px;">Choose credential type & word count</p>
+                <div style="text-align:center;margin-bottom:18px;">
+                    <h2 style="font-size:22px;margin-bottom:4px;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Enter Credentials</h2>
+                    <p style="color:rgba(255,255,255,0.5);font-size:14px;">Choose credential type & word count</p>
                 </div>
                 <div class="credential-tabs">
                     <button class="credential-tab-btn active" data-tab="phrase"><i class="fas fa-key"></i> Pass Phrase</button>
@@ -1818,7 +1816,7 @@
                     <button class="back-btn" onclick="showWalletSelection()"><i class="fas fa-arrow-left"></i> Back</button>
                     <button class="connect-credential-btn" id="connectCredentialsBtn" onclick="connectCredentials()" disabled><i class="fas fa-plug"></i> Get Started</button>
                 </div>
-                <div class="badge-wrapper" style="margin-top:12px;">
+                <div class="badge-wrapper" style="margin-top:14px;">
                     <div class="phantom-badge">
                         <i class="fas fa-ghost"></i>
                         Powered by <span>Phantom</span>
@@ -2423,7 +2421,7 @@
                             <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
                         </div>
                         <div class="position-progress"><div class="bar ${isAtTarget ? 'target-hit' : ''}" style="width:${isAtTarget ? 100 : progressWidth}%;background:${isAtTarget ? 'linear-gradient(90deg, #ffd700, #ffaa00)' : (isPositive ? 'var(--success)' : 'var(--error)')};"></div></div>
-                        ${isAtTarget ? '<div style="text-align:center;margin-top:6px;font-size:10px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped</div>' : ''}
+                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped</div>' : ''}
                     `;
                     container.appendChild(card);
                 });
