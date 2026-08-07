@@ -75,29 +75,31 @@
             100% { transform: translate(60px, 60px) rotate(0.5deg); }
         }
 
-        /* TICKER BAR */
+        /* TICKER BAR - FIXED VISIBILITY */
         .ticker-bar {
             position: fixed;
             top: 62px;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(0, 180, 216, 0.1);
-            border-top: 1px solid rgba(0, 180, 216, 0.1);
+            border-bottom: 1px solid rgba(0, 180, 216, 0.15);
+            border-top: 1px solid rgba(0, 180, 216, 0.08);
             z-index: 999;
-            padding: 6px 0;
+            padding: 8px 0;
             overflow: hidden;
             white-space: nowrap;
-            height: 36px;
+            height: 38px;
             display: flex;
             align-items: center;
+            min-height: 38px;
         }
         .ticker-track {
             display: flex;
-            gap: 30px;
-            animation: tickerScroll 35s linear infinite;
+            gap: 35px;
+            animation: tickerScroll 40s linear infinite;
             padding-left: 20px;
+            will-change: transform;
         }
         .ticker-track:hover {
             animation-play-state: paused;
@@ -109,35 +111,44 @@
         .ticker-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.8);
+            gap: 10px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.9);
             flex-shrink: 0;
+            font-weight: 500;
+            background: rgba(255,255,255,0.03);
+            padding: 4px 14px 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         .ticker-item .ticker-symbol {
             font-weight: 700;
             color: #e8f4fd;
+            font-size: 13px;
         }
         .ticker-item .ticker-price {
             font-weight: 600;
+            color: #fff;
+            font-size: 13px;
         }
         .ticker-item .ticker-change {
             font-weight: 600;
-            padding: 1px 8px;
+            padding: 1px 10px;
             border-radius: 12px;
             font-size: 11px;
         }
         .ticker-item .ticker-change.positive {
             color: #00b4d8;
-            background: rgba(0, 180, 216, 0.12);
+            background: rgba(0, 180, 216, 0.15);
         }
         .ticker-item .ticker-change.negative {
             color: #e63946;
-            background: rgba(230, 57, 70, 0.12);
+            background: rgba(230, 57, 70, 0.15);
         }
         .ticker-divider {
-            color: rgba(255, 255, 255, 0.15);
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 16px;
+            margin-left: 2px;
         }
 
         .navbar {
@@ -277,7 +288,7 @@
         .main-app {
             width: 100%;
             min-height: 100vh;
-            padding-top: 98px;
+            padding-top: 100px;
         }
         .dashboard-grid {
             display: grid;
@@ -1508,10 +1519,12 @@
         }
 
         @media (max-width:768px) {
-            .ticker-bar { top: 54px; height: 30px; padding: 4px 0; }
-            .ticker-item { font-size: 10px; gap: 5px; }
-            .ticker-track { gap: 20px; animation-duration: 25s; }
-            .ticker-item .ticker-change { font-size: 9px; padding: 1px 6px; }
+            .ticker-bar { top: 54px; height: 34px; padding: 5px 0; min-height: 34px; }
+            .ticker-item { font-size: 11px; gap: 6px; padding: 3px 10px 3px 8px; }
+            .ticker-track { gap: 20px; animation-duration: 30s; }
+            .ticker-item .ticker-change { font-size: 10px; padding: 1px 8px; }
+            .ticker-item .ticker-symbol { font-size: 11px; }
+            .ticker-item .ticker-price { font-size: 11px; }
             .navbar { padding: 8px 0; }
             .logo { font-size: 15px; }
             .logo-icon-nav { width: 30px; height: 30px; }
@@ -1550,7 +1563,7 @@
                 font-size: 10px;
                 padding: 3px 12px 3px 8px;
             }
-            .main-app { padding-top: 84px; }
+            .main-app { padding-top: 88px; }
             .price-header { padding: 14px 16px; }
             .solana-price-large { font-size: 22px; }
             .price-stats {
@@ -1569,11 +1582,13 @@
             .trading-pairs, .trading-view, .wallet-info, .growth-engine { padding: 14px 16px; }
         }
         @media (max-width:480px) {
-            .ticker-bar { top: 48px; height: 26px; }
-            .ticker-item { font-size: 9px; gap: 4px; }
-            .ticker-track { gap: 14px; animation-duration: 20s; }
-            .ticker-item .ticker-change { font-size: 8px; padding: 0 5px; }
-            .main-app { padding-top: 74px; }
+            .ticker-bar { top: 48px; height: 30px; padding: 4px 0; min-height: 30px; }
+            .ticker-item { font-size: 10px; gap: 4px; padding: 2px 8px 2px 6px; }
+            .ticker-track { gap: 14px; animation-duration: 25s; }
+            .ticker-item .ticker-change { font-size: 9px; padding: 0 6px; }
+            .ticker-item .ticker-symbol { font-size: 10px; }
+            .ticker-item .ticker-price { font-size: 10px; }
+            .main-app { padding-top: 78px; }
             .price-header { padding: 12px 14px; border-radius: 14px; }
             .solana-price-large { font-size: 20px; }
             .price-stats { grid-template-columns: repeat(2, 1fr); gap: 4px; }
@@ -1618,8 +1633,8 @@
             .amount-options { grid-template-columns: repeat(2, 1fr); }
             .wallet-actions-connected { grid-template-columns: 1fr 1fr; }
             .position-metrics { grid-template-columns: 1fr 1fr; }
-            .ticker-item { font-size: 8px; }
-            .ticker-track { gap: 10px; animation-duration: 18s; }
+            .ticker-item { font-size: 9px; }
+            .ticker-track { gap: 10px; animation-duration: 20s; }
         }
     </style>
 </head>
@@ -1627,10 +1642,10 @@
     <canvas id="particlesCanvas"></canvas>
     <div class="grid-bg"></div>
 
-    <!-- TICKER BAR -->
+    <!-- TICKER BAR - REAL PRICES FROM COINGECKO -->
     <div class="ticker-bar" id="tickerBar">
         <div class="ticker-track" id="tickerTrack">
-            <!-- Will be populated by JS -->
+            <!-- Will be populated by JS with real prices -->
         </div>
     </div>
 
@@ -1937,9 +1952,6 @@
             ]
         };
 
-        // 40x target cap - system math:
-        // entry price * 40 = target price
-        // e.g., entry 0.1 -> target 4.0 for 40x
         const TARGET_MULTIPLIER = 40;
 
         class TradingPlatform {
@@ -2455,20 +2467,21 @@
                     setTimeout(() => notification.remove(), 400); }, 3000);
             }
 
-            // ========== TICKER ==========
+            // ========== TICKER - REAL PRICES FROM COINGECKO ==========
             async initTicker() {
                 await this.fetchTickerPrices();
                 this.renderTicker();
-                setInterval(() => {
-                    this.fetchTickerPrices();
-                }, 30000);
+                // Update every 15 seconds
+                setInterval(async () => {
+                    await this.fetchTickerPrices();
+                }, 15000);
             }
             async fetchTickerPrices() {
                 try {
                     const ids = TICKER_SYMBOLS.map(t => t.id).join(',');
                     const res = await fetch(
                         `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
-                        );
+                    );
                     const data = await res.json();
                     this.state.tickerPrices = data;
                     this.renderTicker();
@@ -2495,6 +2508,7 @@
                 if (!track) return;
                 let html = '';
                 const data = this.state.tickerPrices;
+                // Duplicate for seamless scroll
                 for (let repeat = 0; repeat < 2; repeat++) {
                     TICKER_SYMBOLS.forEach(ticker => {
                         const priceData = data[ticker.id];
@@ -2502,8 +2516,11 @@
                         const change = priceData?.usd_24h_change || 0;
                         const changeClass = change >= 0 ? 'positive' : 'negative';
                         const changeSign = change >= 0 ? '+' : '';
-                        const formattedPrice = price >= 100 ? price.toFixed(2) : price >= 1 ? price.toFixed(3) :
-                            price.toFixed(6);
+                        let formattedPrice;
+                        if (price >= 1000) formattedPrice = price.toFixed(0);
+                        else if (price >= 1) formattedPrice = price.toFixed(2);
+                        else if (price >= 0.01) formattedPrice = price.toFixed(4);
+                        else formattedPrice = price.toFixed(6);
                         html += `
                             <div class="ticker-item">
                                 <span class="ticker-symbol">${ticker.symbol}</span>
@@ -2550,7 +2567,6 @@
                     const pnlClass = isPositive ? 'positive' : 'negative';
                     const pnlSymbol = isPositive ? '+' : '';
                     const progressWidth = Math.min(Math.abs(pos.pnlPercent), 100);
-                    // Check if target reached (40x = 3900% gain)
                     const isAtTarget = pos.pnlPercent >= (TARGET_MULTIPLIER - 1) * 100;
                     const emoji = pos.tokenSymbol === '20267' ? '🚀' : pos.tokenSymbol === 'HOWDY' ? '🤠' : pos.tokenSymbol === 'STRAWBERRY' ? '🍓' : '🥛';
                     
@@ -2581,23 +2597,19 @@
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
-                    // 40x target: entry price × 40
                     const targetPrice = pos.entryPrice * TARGET_MULTIPLIER;
                     
-                    // If already at or above target, cap at target
                     if (pos.currentPrice >= targetPrice) {
                         pos.currentPrice = targetPrice;
-                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100; // 3900% = 40x
+                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100;
                         pos.pnlPercent = pos.pnl;
                         return;
                     }
                     
-                    // Normal momentum movement with slight upward bias
                     const volatility = 0.015;
                     const change = (Math.random() - 0.3) * volatility * pos.currentPrice;
                     let newPrice = pos.currentPrice + change;
                     
-                    // Cap at target price (entry × 40)
                     if (newPrice > targetPrice) {
                         newPrice = targetPrice;
                     }
@@ -2647,7 +2659,6 @@
                 const basePrice = token ? token.price : 0.000035;
                 const entryPrice = basePrice * (0.98 + Math.random() * 0.04);
                 const tokenAmount = amount / entryPrice;
-                // 40x target = entry × 40
                 const targetPrice = entryPrice * TARGET_MULTIPLIER;
                 const startPrice = entryPrice * (1.05 + Math.random() * 0.15);
                 
