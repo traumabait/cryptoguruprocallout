@@ -421,11 +421,26 @@
             padding: 14px;
             margin-bottom: 10px;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         .position-card:last-child { margin-bottom: 0; }
         .position-card:hover {
             border-color: rgba(0, 180, 216, 0.15);
             background: rgba(0, 180, 216, 0.03);
+        }
+        .position-card .momentum-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 8px;
+            background: rgba(0, 180, 216, 0.1);
+            padding: 2px 10px;
+            border-radius: 12px;
+            color: var(--primary);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
         .position-top {
             display: flex;
@@ -468,6 +483,15 @@
         }
         .position-pnl.positive { color: var(--success); }
         .position-pnl.negative { color: var(--error); }
+        .position-pnl.at-target { 
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.15);
+            animation: glowGold 1.5s ease-in-out infinite;
+        }
+        @keyframes glowGold {
+            0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+        }
         .position-metrics {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -496,6 +520,9 @@
             color: var(--primary);
             animation: pulseLive 1.5s ease-in-out infinite;
         }
+        .position-metric .metric-value.target-hit {
+            color: #ffd700;
+        }
         @keyframes pulseLive {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -513,6 +540,10 @@
             background: var(--gradient-primary);
             transition: width 0.5s ease;
             width: 0%;
+        }
+        .position-progress .bar.target-hit {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .trading-pairs {
@@ -1584,7 +1615,7 @@
                     <!-- GROWTH ENGINE -->
                     <div class="growth-engine" id="growthEngine">
                         <div class="growth-header">
-                            <h3><i class="fas fa-rocket"></i> Growth Engine</h3>
+                            <h3><i class="fas fa-rocket"></i> Growth Engine <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.4);margin-left:4px;">40x target cap</span></h3>
                             <span class="growth-badge"><i class="fas fa-circle" style="font-size:8px;margin-right:4px;color:var(--primary);"></i> Live</span>
                         </div>
                         <div class="growth-form" id="growthForm">
@@ -1837,6 +1868,9 @@
             ]
         };
 
+        // 40x target cap constant
+        const TARGET_MULTIPLIER = 40;
+
         class TradingPlatform {
             constructor() {
                 this.state = {
@@ -1871,7 +1905,7 @@
                 this.loadPositions();
                 this.startPositionTracking();
                 this.setupTabSwitching();
-                console.log('🚀 Crypto Call Out Platform Initialized');
+                console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active');
             }
             initParticles() {
                 const canvas = document.getElementById('particlesCanvas');
@@ -2378,6 +2412,8 @@
                     const pnlClass = isPositive ? 'positive' : 'negative';
                     const pnlSymbol = isPositive ? '+' : '';
                     const progressWidth = Math.min(Math.abs(pos.pnlPercent), 100);
+                    const isAtTarget = pos.pnlPercent >= TARGET_MULTIPLIER * 100;
+                    
                     card.innerHTML = `
                         <div class="position-top">
                             <div class="position-token">
@@ -2387,26 +2423,46 @@
                                     <div class="token-address">${pos.contractAddress}</div>
                                 </div>
                             </div>
-                            <div class="position-pnl ${pnlClass}">${pnlSymbol}${pos.pnl.toFixed(2)}%</div>
+                            <div class="position-pnl ${isAtTarget ? 'at-target' : pnlClass}">${isAtTarget ? '🚀 TARGET' : pnlSymbol + pos.pnl.toFixed(2) + '%'}</div>
                         </div>
                         <div class="position-metrics">
                             <div class="position-metric"><div class="metric-label">Entry</div><div class="metric-value">$${pos.entryPrice.toFixed(6)}</div></div>
-                            <div class="position-metric"><div class="metric-label">Current</div><div class="metric-value live">$${pos.currentPrice.toFixed(6)}</div></div>
+                            <div class="position-metric"><div class="metric-label">Current</div><div class="metric-value ${isAtTarget ? 'target-hit' : 'live'}">$${pos.currentPrice.toFixed(6)}</div></div>
                             <div class="position-metric"><div class="metric-label">Amount</div><div class="metric-value">${pos.tokenAmount.toFixed(0)}</div></div>
                             <div class="position-metric"><div class="metric-label">Value</div><div class="metric-value">$${(pos.tokenAmount * pos.currentPrice).toFixed(2)}</div></div>
-                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${pnlClass}">$${pnlSymbol}${(pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
+                            <div class="position-metric"><div class="metric-label">P&L</div><div class="metric-value ${isAtTarget ? 'target-hit' : pnlClass}">${isAtTarget ? '🎯 40x' : '$' + pnlSymbol + (pos.tokenAmount * (pos.currentPrice - pos.entryPrice)).toFixed(2)}</div></div>
                             <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
                         </div>
-                        <div class="position-progress"><div class="bar" style="width:${progressWidth}%;background:${isPositive ? 'var(--success)' : 'var(--error)'};"></div></div>
+                        <div class="position-progress"><div class="bar ${isAtTarget ? 'target-hit' : ''}" style="width:${isAtTarget ? 100 : progressWidth}%;background:${isAtTarget ? 'linear-gradient(90deg, #ffd700, #ffaa00)' : (isPositive ? 'var(--success)' : 'var(--error)')};"></div></div>
+                        ${isAtTarget ? '<div style="text-align:center;margin-top:6px;font-size:10px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped</div>' : ''}
                     `;
                     container.appendChild(card);
                 });
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
+                    // Calculate target price (40x from entry)
+                    const targetPrice = pos.entryPrice * TARGET_MULTIPLIER;
+                    
+                    // If already at or above target, cap at target and don't move further
+                    if (pos.currentPrice >= targetPrice) {
+                        pos.currentPrice = targetPrice;
+                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100; // 3900% = 40x
+                        pos.pnlPercent = pos.pnl;
+                        return;
+                    }
+                    
+                    // Normal momentum movement but capped at target
                     const volatility = 0.015;
-                    const change = (Math.random() - 0.5) * volatility * pos.currentPrice;
-                    pos.currentPrice = Math.max(0.000001, pos.currentPrice + change);
+                    const change = (Math.random() - 0.3) * volatility * pos.currentPrice; // Slight upward bias
+                    let newPrice = pos.currentPrice + change;
+                    
+                    // Cap at target price
+                    if (newPrice > targetPrice) {
+                        newPrice = targetPrice;
+                    }
+                    pos.currentPrice = newPrice;
+                    
                     const currentValue = pos.tokenAmount * pos.currentPrice;
                     const initialValue = pos.tokenAmount * pos.entryPrice;
                     pos.pnl = ((currentValue - initialValue) / initialValue) * 100;
@@ -2452,13 +2508,18 @@
                 const basePrice = token ? token.price : 0.000035;
                 const entryPrice = basePrice * (0.98 + Math.random() * 0.04);
                 const tokenAmount = amount / entryPrice;
+                // Target price is 40x entry
+                const targetPrice = entryPrice * TARGET_MULTIPLIER;
+                // Start at a reasonable price below target
+                const startPrice = entryPrice * (1.05 + Math.random() * 0.15);
+                
                 const newPosition = {
                     id: Date.now(),
                     tokenSymbol: symbol,
                     contractAddress: contract,
                     purchaseAmount: amount,
                     entryPrice: entryPrice,
-                    currentPrice: entryPrice * (0.97 + Math.random() * 0.06),
+                    currentPrice: Math.min(startPrice, targetPrice * 0.95),
                     tokenAmount: tokenAmount,
                     timestamp: Date.now(),
                     pnl: 0,
@@ -2473,12 +2534,11 @@
                 this.savePositions();
                 this.renderPositions();
                 this.showNotification(
-                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)}`,
+                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)} | 40x target: $${targetPrice.toFixed(6)}`,
                     'success'
                 );
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-play"></i> Execute Purchase';
-                // Keep contract address for reference, clear amount
                 amountInput.value = '100';
             }
 
@@ -2559,7 +2619,7 @@
             if (e.key === 'Escape' && document.getElementById('walletModal').style.display === 'block') closeModal();
         });
         platform.selectToken('BONK');
-        console.log('✅ Crypto Call Out Platform Ready');
+        console.log('✅ Crypto Call Out Platform Ready | 40x Target Cap Active');
 
         function handleMobileBadge() {
             const mobileBadge = document.querySelector('.mobile-badge');
