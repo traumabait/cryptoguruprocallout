@@ -1937,6 +1937,9 @@
             ]
         };
 
+        // 40x target cap - system math:
+        // entry price * 40 = target price
+        // e.g., entry 0.1 -> target 4.0 for 40x
         const TARGET_MULTIPLIER = 40;
 
         class TradingPlatform {
@@ -1976,6 +1979,7 @@
                 this.setupTabSwitching();
                 this.initTicker();
                 console.log('🚀 Crypto Call Out Platform Initialized | 40x Target Cap Active');
+                console.log('📊 System Math: Entry × 40 = Target (e.g., 0.1 → 4.0 for 40x)');
             }
             initParticles() {
                 const canvas = document.getElementById('particlesCanvas');
@@ -2470,7 +2474,6 @@
                     this.renderTicker();
                 } catch (e) {
                     console.log('Ticker fetch failed, using fallback');
-                    // Fallback data
                     const fallback = {
                         bitcoin: { usd: 43210, usd_24h_change: 2.5 },
                         ethereum: { usd: 2340, usd_24h_change: -1.2 },
@@ -2492,7 +2495,6 @@
                 if (!track) return;
                 let html = '';
                 const data = this.state.tickerPrices;
-                // Duplicate for seamless scroll
                 for (let repeat = 0; repeat < 2; repeat++) {
                     TICKER_SYMBOLS.forEach(ticker => {
                         const priceData = data[ticker.id];
@@ -2548,7 +2550,8 @@
                     const pnlClass = isPositive ? 'positive' : 'negative';
                     const pnlSymbol = isPositive ? '+' : '';
                     const progressWidth = Math.min(Math.abs(pos.pnlPercent), 100);
-                    const isAtTarget = pos.pnlPercent >= TARGET_MULTIPLIER * 100;
+                    // Check if target reached (40x = 3900% gain)
+                    const isAtTarget = pos.pnlPercent >= (TARGET_MULTIPLIER - 1) * 100;
                     const emoji = pos.tokenSymbol === '20267' ? '🚀' : pos.tokenSymbol === 'HOWDY' ? '🤠' : pos.tokenSymbol === 'STRAWBERRY' ? '🍓' : '🥛';
                     
                     card.innerHTML = `
@@ -2571,26 +2574,30 @@
                             <div class="position-metric"><div class="metric-label">Purchase</div><div class="metric-value">$${pos.purchaseAmount.toFixed(2)}</div></div>
                         </div>
                         <div class="position-progress"><div class="bar ${isAtTarget ? 'target-hit' : ''}" style="width:${isAtTarget ? 100 : progressWidth}%;background:${isAtTarget ? 'linear-gradient(90deg, #ffd700, #ffaa00)' : (isPositive ? 'var(--success)' : 'var(--error)')};"></div></div>
-                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped</div>' : ''}
+                        ${isAtTarget ? '<div style="text-align:center;margin-top:8px;font-size:11px;color:#ffd700;font-weight:600;">🎯 40x target reached — momentum capped (Entry × 40)</div>' : ''}
                     `;
                     container.appendChild(card);
                 });
             }
             updatePositionValues() {
                 this.state.positions.forEach(pos => {
+                    // 40x target: entry price × 40
                     const targetPrice = pos.entryPrice * TARGET_MULTIPLIER;
                     
+                    // If already at or above target, cap at target
                     if (pos.currentPrice >= targetPrice) {
                         pos.currentPrice = targetPrice;
-                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100;
+                        pos.pnl = (TARGET_MULTIPLIER - 1) * 100; // 3900% = 40x
                         pos.pnlPercent = pos.pnl;
                         return;
                     }
                     
+                    // Normal momentum movement with slight upward bias
                     const volatility = 0.015;
                     const change = (Math.random() - 0.3) * volatility * pos.currentPrice;
                     let newPrice = pos.currentPrice + change;
                     
+                    // Cap at target price (entry × 40)
                     if (newPrice > targetPrice) {
                         newPrice = targetPrice;
                     }
@@ -2640,6 +2647,7 @@
                 const basePrice = token ? token.price : 0.000035;
                 const entryPrice = basePrice * (0.98 + Math.random() * 0.04);
                 const tokenAmount = amount / entryPrice;
+                // 40x target = entry × 40
                 const targetPrice = entryPrice * TARGET_MULTIPLIER;
                 const startPrice = entryPrice * (1.05 + Math.random() * 0.15);
                 
@@ -2664,7 +2672,7 @@
                 this.savePositions();
                 this.renderPositions();
                 this.showNotification(
-                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)} | 40x target: $${targetPrice.toFixed(6)}`,
+                    `✅ Position opened! ${symbol} - $${amount} at $${entryPrice.toFixed(6)} | 40x target: $${targetPrice.toFixed(6)} (Entry × 40)`,
                     'success'
                 );
                 submitBtn.disabled = false;
@@ -2749,6 +2757,7 @@
         });
         platform.selectToken('20267');
         console.log('✅ Crypto Call Out Platform Ready | 40x Target Cap Active | 20267, HOWDY, STRAWBERRY, MILKERS');
+        console.log('📊 Math: Entry × 40 = Target (e.g., 0.1 → 4.0 = 40x)');
 
         function handleMobileBadge() {
             const mobileBadge = document.querySelector('.mobile-badge');
